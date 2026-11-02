@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人事業主・中小企業向けSEOコンサルティング｜SEO顧問・伴走支援【ThirdPlace】</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="業界歴15年のSEOコンサルタントが、個人事業主・中小企業のSEOを月額制で伴走します。VOL90,500のKWで1位、月間700万PVの実績。初回相談は無料です。">
+  <style>
+    /* デザインB案：無彩色（白・黒・薄いグレー）、太い英字の見出し、左見出し・右本文の2カラム、細い罫線、丸型ボタン */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --ink:#000;--mute:#6b6b6b;--line:#e5e5e5;--panel:#f6f6f6;--max:1100px;
+      --gold:#000;--gold-pale:rgba(0,0,0,.05);
+      --font-en:"Helvetica Neue",Helvetica,Arial,"Segoe UI",sans-serif;
+      --font-jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+    }
+    body{font-family:var(--font-jp);background:#fff;color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    section[id]{scroll-margin-top:72px}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+    .sec{padding:120px 0}
+
+    /* ── 見出し ── */
+    .label{display:block;font-family:var(--font-en);font-size:clamp(24px,2.8vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.08;text-transform:uppercase;color:#000;margin-bottom:18px}
+    .h2{font-size:15px;font-weight:700;line-height:1.75;letter-spacing:0;color:#000}
+    .h2--wh{color:#000}
+    .lead{font-size:13px;color:#555;line-height:2;margin-top:14px}
+    .lead--wh{color:#555}
+
+    /* ── ボタン（丸型） ── */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;font-size:13px;font-weight:700;letter-spacing:.02em;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s;font-family:var(--font-jp)}
+    .btn--gold,.btn--dk{background:#000;color:#fff}
+    .btn--gold:hover,.btn--dk:hover{background:#333}
+    .btn--ghost{background:transparent;color:#000;border-color:#000}
+    .btn--ghost:hover{background:#000;color:#fff}
+    .btn--full{width:100%;justify-content:center}
+    .hero-btns .btn--gold::after,#cta .btn--gold::after{content:'→'}
+    #about .btn--gold,#cta .btn--gold,#ai .btn--gold,.plan-card--ft .btn--gold{background:#fff;color:#000}
+    #about .btn--gold:hover,#cta .btn--gold:hover,.plan-card--ft .btn--gold:hover{background:#ddd}
+    #cta .btn--ghost,#about .btn--ghost,#ai .btn--ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+    #cta .btn--ghost:hover{background:#fff;color:#000}
+
+    /* ── ヘッダー ── */
+    #hdr{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    #hdr.scrolled{background:rgba(255,255,255,.99)}
+    .hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:var(--max);margin:0 auto;padding:0 32px}
+    .logo{font-family:var(--font-en);font-size:16px;font-weight:700;letter-spacing:-.01em;color:#000}
+    .logo span{color:#999}
+    .hnav{display:flex;align-items:center;gap:32px;list-style:none}
+    .hnav a{font-size:12px;font-weight:500;color:#333;transition:color .2s}
+    .hnav a:hover{color:#000;text-decoration:underline;text-underline-offset:7px}
+    .hctx{display:flex;gap:8px}
+    .hctx .btn{padding:9px 20px;font-size:12px}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:22px;height:1.5px;background:#000;margin:6px 0}
+    #subnav{display:none}
+
+    /* ── ヒーロー ── */
+    #hero{position:relative;display:block;background:#fff;padding-top:64px}
+    .hero-bg-img,.hero-overlay,.hero-grid,.hero-scroll{display:none}
+    .hero-in{display:grid;grid-template-columns:1fr 400px;gap:72px;align-items:center;max-width:var(--max);margin:0 auto;padding:96px 32px 110px}
+    .hero-author-row{display:flex;align-items:center;gap:12px;margin-bottom:36px}
+    .hero-author-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:1px solid var(--line);flex-shrink:0}
+    .hero-author-name{font-size:12px;font-weight:700;color:#000;line-height:1.5}
+    .hero-author-name em{display:block;font-style:normal;font-weight:400;color:var(--mute);font-size:11px}
+    .hero-eyebrow{display:block;font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:24px}
+    .hero-h1{font-size:clamp(26px,3.05vw,44px);font-weight:900;line-height:1.25;letter-spacing:-.03em;color:#000;margin-bottom:28px}
+    .hero-h1 em{font-style:normal;color:#000}
+    .hero-h1-s{display:block;font-size:.4em;font-weight:700;color:var(--mute);margin-top:14px;letter-spacing:0}
+    .hero-sub{font-size:14px;color:#444;max-width:520px;line-height:2;margin-bottom:28px}
+    .hero-motto{font-family:var(--font-en);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#aaa;margin-bottom:20px}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+    .hero-badges{display:flex;gap:24px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line)}
+    .hero-badge{display:flex;align-items:center;gap:8px;font-size:12px;color:#333}
+    .hero-badge-icon{width:auto;height:auto;background:none;border:none;border-radius:0;font-size:12px;font-weight:900;color:#000}
+
+    /* ── フォーム ── */
+    .hero-form-box{background:var(--panel);border:none;border-radius:20px;padding:32px}
+    .hero-form-title{font-size:14px;font-weight:700;color:#000;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+    .hero-form-title span{display:inline-block;background:#000;color:#fff;font-size:11px;padding:1px 9px;border-radius:999px;margin-right:6px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+    .frow.full{grid-template-columns:1fr}
+    .finput{width:100%;padding:12px 14px;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:10px;color:#000;outline:none;font-family:inherit;transition:border-color .2s}
+    .finput::placeholder{color:#999}
+    .finput:focus{border-color:#000}
+    textarea.finput{min-height:84px;resize:vertical}
+    .fchk{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#555;margin:12px 0}
+    .fchk input{margin-top:2px;accent-color:#000}
+    .fsubmit{width:100%;padding:14px;font-size:13px;font-weight:700;background:#000;color:#fff;border:none;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .2s}
+    .fsubmit:hover{background:#333}
+
+    /* ── 数字帯 ── */
+    #stats{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0}
+    .stats-g{display:grid;grid-template-columns:repeat(4,1fr)}
+    .stat-item{text-align:left;padding:48px 24px;border-left:1px solid var(--line)}
+    .stat-item:first-child{border-left:none;padding-left:0}
+    .stat-n{font-family:var(--font-en);font-size:clamp(40px,5vw,64px);font-weight:700;color:#000;line-height:1;letter-spacing:-.04em}
+    .stat-n sup,.stat-n em{font-style:normal;font-size:.4em;color:var(--mute);vertical-align:baseline;margin-left:4px;letter-spacing:0;font-family:var(--font-jp)}
+    .stat-l{font-size:12px;color:var(--mute);margin-top:12px}
+
+    /* ── 2カラムの節（左に見出し、右に本文） ── */
+    :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq){padding:120px 0}
+    :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq) > .wrap{display:grid;grid-template-columns:300px minmax(0,1fr);column-gap:72px;align-items:start}
+    :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq) > .wrap > *{grid-column:2}
+    :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq) > .wrap > [class*="-hd"]{grid-column:1;grid-row:1 / span 20;position:sticky;top:96px;align-self:start;text-align:left;margin:0}
+    .mth-hd .lead{max-width:none!important;margin:14px 0 0!important}
+
+    /* 背景の交互配置 */
+    #pain,#features,#services,#compare,#plans,#team,#faq{background:#fff}
+    #method,#recommended,#komon,#cases,#process,#authority{background:var(--panel)}
+
+    /* ── お悩み ── */
+    .pain-g{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:40px}
+    .pain-cat-title{font-size:13px;font-weight:700;color:#000;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .pain-cat-title::before{content:'';width:3px;height:16px;background:#000;flex-shrink:0}
+    .pain-list,.ok-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .pain-list li,.ok-list li{font-size:13px;padding:14px 16px;background:var(--panel);border:none;border-radius:10px;display:flex;align-items:flex-start;gap:10px;line-height:1.7}
+    .pain-list li::before{content:'✕';color:#000;font-size:11px;font-weight:900;margin-top:3px;flex-shrink:0}
+    .ok-list li::before{content:'✓';color:#000;font-size:12px;font-weight:900;margin-top:2px;flex-shrink:0}
+    #komon .pain-list li,#komon .ok-list li,#recommended .pain-list li{background:#fff}
+    .pain-resolve{background:#000;color:#fff;border-radius:20px;padding:44px 36px;text-align:left}
+    .pain-resolve p{font-size:clamp(20px,2.4vw,28px);font-weight:900;line-height:1.5}
+    .pain-resolve p em{font-style:normal;color:#fff;border-bottom:2px solid #fff}
+    .pain-resolve small{display:block;margin-top:14px;font-size:12px;color:rgba(255,255,255,.6)}
+
+    /* ── 説明（黒の帯） ── */
+    #about{background:#000;color:#fff;padding:140px 0}
+    .about-g{display:block;max-width:820px;margin:0 auto}
+    .about-img{display:none}
+    #about .label{color:rgba(255,255,255,.5);font-size:12px;letter-spacing:.2em;margin-bottom:28px}
+    #about .h2{font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.4;margin-bottom:32px;color:#fff}
+    #about .lead{font-size:15px;color:rgba(255,255,255,.72);line-height:2.1}
+    #about strong{color:#fff;font-weight:700}
+
+    /* ── 設計思想 ── */
+    .mth-steps{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:24px}
+    .mth-step{display:grid;grid-template-columns:84px 170px 1fr;gap:16px;align-items:start;text-align:left;background:#fff;border:none;border-radius:14px;padding:20px 24px;min-width:0;flex:none}
+    .mth-step-num{font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--mute);margin:3px 0 0}
+    .mth-step-icon,.mth-arrow{display:none}
+    .mth-step-label{font-size:14px;font-weight:700;color:#000;margin:0;line-height:1.5}
+    .mth-step-label small{display:block;font-size:11px;font-weight:400;color:var(--mute);margin-top:2px}
+    .mth-step-body{font-size:12px;color:#555;line-height:1.8}
+    .mth-heatmap{background:#fff;border:none;border-radius:14px;padding:24px}
+    .mth-heatmap-title{font-size:12px;font-weight:700;color:#000;margin-bottom:14px;text-transform:none;letter-spacing:0}
+    .mth-heat-table{width:100%;min-width:520px;border-collapse:collapse;font-size:12px}
+    .mth-heat-table th{padding:9px 12px;text-align:left;background:var(--panel);color:#555;font-weight:700;white-space:nowrap;border-bottom:1px solid var(--line)}
+    .mth-heat-table td{padding:10px 12px;border-bottom:1px solid var(--line);color:#333;white-space:nowrap}
+    .h-top{background:#000;color:#fff!important;font-weight:700;text-align:center}
+    .h-mid{background:#e9e9e9;color:#333!important;text-align:center}
+    .h-miss{color:#aaa!important;text-align:center}
+    .h-goal{box-shadow:inset 0 0 0 1px #000;color:#000!important;font-weight:700;text-align:center}
+    .mth-heat-note{font-size:11px;color:#888;margin-top:14px;line-height:1.8}
+
+    /* ── 選ばれる理由 ── */
+    .feat-g{display:block;border-top:1px solid #000}
+    .feat-card{display:grid;grid-template-columns:96px 1fr;column-gap:16px;padding:32px 0;border-bottom:1px solid var(--line);background:none;border-radius:0}
+    .feat-no{grid-row:1 / span 3;font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--mute);margin:5px 0 0}
+    .feat-icon{display:none}
+    .feat-title{font-size:18px;font-weight:700;color:#000;margin-bottom:10px;line-height:1.5}
+    .feat-body{font-size:13px;color:#555;line-height:1.95}
+    .feat-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+    .feat-tag{font-size:11px;font-weight:600;padding:3px 12px;border-radius:999px;border:1px solid var(--line);background:none;color:#444}
+
+    /* ── 向いている方 ── */
+    .rec-g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .rec-card{background:#fff;border:none;border-radius:14px;padding:26px}
+    .rec-num{font-family:var(--font-en);font-size:24px;font-weight:700;color:#000;line-height:1;margin-bottom:14px}
+    .rec-title{font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.55}
+    .rec-body{font-size:12px;color:#555;line-height:1.9}
+    .rec-ng{max-width:none;margin:40px 0 0}
+
+    /* ── サービス内容 ── */
+    .svc-item{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:34px 0;border-bottom:1px solid var(--line)}
+    .svc-item:first-of-type{border-top:1px solid #000}
+    .svc-item:last-child{border-bottom:none}
+    .svc-num{font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--mute);padding-top:6px}
+    .svc-img{display:none}
+    .svc-content-title{font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.5}
+    .svc-body{font-size:13px;color:#555;line-height:1.95;max-width:none}
+    .svc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .chip{font-size:11px;font-weight:600;padding:4px 14px;background:none;border:1px solid var(--line);border-radius:999px;color:#333}
+    .komon-note{font-size:12px;color:#777;text-align:left;line-height:1.9;margin-top:10px}
+    .komon-note a{color:#000;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+
+    /* ── 比較表 ── */
+    .cmp-table{width:100%;min-width:0!important;border-collapse:collapse;font-size:11px}
+    .cmp-table th,.cmp-table td{padding:14px 8px;text-align:center;border-bottom:1px solid var(--line)}
+    .cmp-table th{font-size:11px;font-weight:700;color:#555;background:none;border-bottom:1px solid #000}
+    .cmp-table td{color:#333}
+    .cmp-table td:first-child{text-align:left;color:#000;font-weight:700;width:30%}
+    .cmp-table th:first-child{text-align:left}
+    .cmp-table thead .col-tp{background:#000;color:#fff;border:none}
+    .cmp-table .col-tp{background:var(--panel);border:none;color:#000;font-weight:700}
+    .cmp-yes{color:#000;font-weight:900;font-size:15px}
+    .cmp-no{color:#bbb}
+    .cmp-tri{color:#888}
+
+    /* ── 事例 ── */
+    .cases-g{display:grid;grid-template-columns:1fr;gap:12px}
+    .case-card{background:#fff;border:none;border-radius:16px;overflow:hidden}
+    .case-body{padding:28px}
+    .case-ind{font-family:var(--font-jp);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--mute);margin-bottom:8px}
+    .case-title{font-size:17px;font-weight:700;color:#000;margin-bottom:16px;line-height:1.55}
+    .case-metrics{display:flex;margin-bottom:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .case-metric{flex:1;text-align:left;background:none;border-radius:0;padding:14px 16px;border-right:1px solid var(--line)}
+    .case-metric:first-child{padding-left:0}
+    .case-metric:last-child{border-right:none}
+    .case-metric-num{font-family:var(--font-en);font-size:28px;font-weight:700;color:#000;line-height:1.1;letter-spacing:-.03em}
+    .case-metric-label{font-size:10px;color:var(--mute);margin-top:4px}
+    .case-text{font-size:12px;color:#555;line-height:1.95}
+
+    /* ── AI（黒の帯） ── */
+    #ai{background:#000;color:#fff;padding:130px 0;position:relative}
+    .ai-glow,.ai-img{display:none}
+    .ai-in{display:block}
+    .ai-badge{display:inline-flex;border:1px solid rgba(255,255,255,.4);background:none;color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 16px;border-radius:999px;margin-bottom:24px}
+    .ai-title{font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.3;letter-spacing:-.02em;margin-bottom:20px}
+    .ai-lead{font-size:14px;color:rgba(255,255,255,.7);max-width:720px;line-height:2;margin-bottom:44px}
+    .ai-pts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .ai-pt{display:block;background:none;border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:24px}
+    .ai-pt-icon{display:none}
+    .ai-pt-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px}
+    .ai-pt-body{font-size:12px;color:rgba(255,255,255,.62);line-height:1.9}
+
+    /* ── 料金 ── */
+    .plans-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
+    .plan-card{background:var(--panel);border:none;border-radius:16px;padding:28px;position:relative}
+    .plan-card--ft{background:#000;color:#fff}
+    .plan-badge{position:absolute;top:18px;right:18px;left:auto;transform:none;background:#fff;color:#000;font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 12px;border-radius:999px}
+    .plan-name{font-family:var(--font-en);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+    .plan-card--ft .plan-name{color:rgba(255,255,255,.6)}
+    .plan-price{font-family:var(--font-en);font-size:clamp(28px,3.4vw,38px);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
+    .plan-period{font-size:11px;color:var(--mute);margin-bottom:16px}
+    .plan-card--ft .plan-period{color:rgba(255,255,255,.5)}
+    .plan-desc{font-size:12px;color:#555;line-height:1.8;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+    .plan-card--ft .plan-desc{color:rgba(255,255,255,.65);border-color:rgba(255,255,255,.2)}
+    .plan-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+    .plan-list li{font-size:12px;display:flex;gap:8px;align-items:flex-start;line-height:1.7}
+    .plan-list li::before{content:'✓';color:#000;font-weight:900;flex-shrink:0}
+    .plan-card--ft .plan-list li{color:rgba(255,255,255,.85)}
+    .plan-card--ft .plan-list li::before{color:#fff}
+    .plan-note{font-size:11px;color:#888;text-align:center;margin-top:12px}
+    .plan-card--ft .plan-note{color:rgba(255,255,255,.4)}
+    #plans .wrap > p{text-align:left!important}
+    .terms{width:100%;max-width:none;margin:32px 0 0;border-collapse:collapse;font-size:13px;background:none;border:none;border-top:1px solid #000}
+    .terms th,.terms td{padding:14px 12px;text-align:left;border-bottom:1px solid var(--line);line-height:1.8;vertical-align:top}
+    .terms th{width:26%;background:none;font-weight:700;color:#000}
+
+    /* ── 流れ ── */
+    .proc-g{display:grid;grid-template-columns:1fr;gap:0}
+    .proc-g::before{display:none}
+    .proc-step{display:grid;grid-template-columns:64px 1fr;align-items:start;text-align:left;padding:24px 0;border-top:1px solid var(--line);position:static}
+    .proc-step:first-child{border-top:1px solid #000}
+    .proc-num{width:44px;height:44px;background:#fff;color:#000;border:1px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-en);font-size:13px;font-weight:700;margin:0}
+    .proc-step.active .proc-num{background:#000;color:#fff}
+    .proc-title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.5}
+    .proc-body{font-size:12px;color:#555;line-height:1.9}
+
+    /* ── プロフィール ── */
+    .team-g{display:grid;grid-template-columns:1fr;gap:16px}
+    .team-g.team-g--one{max-width:none;margin:0}
+    .team-card{background:var(--panel);border:none;border-radius:16px;padding:30px;display:flex;gap:22px}
+    .team-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--line);filter:grayscale(1)}
+    .team-name{font-size:17px;font-weight:700;color:#000;margin-bottom:4px}
+    .team-role{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--mute);margin-bottom:12px}
+    .team-role a{color:#000!important;text-decoration:underline;text-underline-offset:3px}
+    .team-bio{font-size:12px;color:#444;line-height:1.95}
+    .team-partner-note{font-size:12px;color:#666;line-height:1.9;text-align:left}
+
+    /* ── メディア実績 ── */
+    .auth-g{display:grid;grid-template-columns:1fr;gap:10px}
+    .auth-card{background:#fff;border:none;border-radius:14px;padding:24px;display:flex;gap:16px;align-items:flex-start}
+    .auth-icon{display:none}
+    .auth-type{font-family:var(--font-jp);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--mute);margin-bottom:4px}
+    .auth-title{font-size:14px;font-weight:700;color:#000;line-height:1.55;margin-bottom:6px}
+    .auth-sub{font-size:12px;color:#555;line-height:1.9}
+
+    /* ── FAQ ── */
+    .faq-cols{display:block}
+    .faq-item{border-top:1px solid var(--line)}
+    .faq-cols > div:first-child .faq-item:first-child{border-top:1px solid #000}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;cursor:pointer;font-size:14px;font-weight:700;color:#000;line-height:1.6;transition:color .2s}
+    .faq-q:hover{color:#666}
+    .faq-icon{width:28px;height:28px;border:1px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform .2s,background .2s,color .2s}
+    .faq-item.open .faq-icon{transform:rotate(45deg);background:#000;color:#fff}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .faq-item.open .faq-a{max-height:360px}
+    .faq-a-in{font-size:13px;color:#555;line-height:2;padding-bottom:22px}
+
+    /* ── CTA（黒の帯） ── */
+    #cta{background:#000;padding:140px 0;text-align:center;position:relative}
+    .cta-glow{display:none}
+    .cta-in{position:relative;z-index:1}
+    .cta-eye{font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px}
+    .cta-h2{font-size:clamp(32px,5.4vw,64px);font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.03em;margin-bottom:20px}
+    .cta-h2 em{font-style:normal;color:#fff;border-bottom:.07em solid #fff}
+    .cta-lead{font-size:14px;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 36px;line-height:2}
+    .cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .cta-note{margin-top:24px;font-size:12px;color:rgba(255,255,255,.4)}
+
+    /* ── フッター ── */
+    #footer{background:#0a0a0a;border-top:1px solid #222;padding:56px 0 28px;color:#fff}
+    .footer-top{display:grid;grid-template-columns:240px 1fr;gap:48px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #222}
+    #footer .logo{color:#fff;margin-bottom:12px;display:inline-block}
+    .footer-tagline{font-size:12px;color:#777;line-height:1.8}
+    .footer-nav-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .footer-nav-head{font-family:var(--font-jp);font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;margin-bottom:12px}
+    .footer-nav-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-nav-list a{font-size:12px;color:#888;transition:color .2s}
+    .footer-nav-list a:hover{color:#fff}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .footer-copy{font-size:11px;color:#555}
+    .footer-links-b{display:flex;gap:24px;list-style:none}
+    .footer-links-b a{font-size:11px;color:#777}
+    .footer-links-b a:hover{color:#fff}
+
+    /* ── アニメーション ── */
+    .fade-up{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* ── レスポンシブ ── */
+    @media(max-width:1024px){
+      :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq) > .wrap{grid-template-columns:220px minmax(0,1fr);column-gap:40px}
+      .hero-in{gap:40px}
+    }
+    @media(max-width:900px){
+      .hnav,.hctx .btn:first-child{display:none}
+      .hamburger{display:block}
+      .hero-in{grid-template-columns:1fr;padding:64px 24px 72px}
+      .hero-form-box{display:none}
+      .wrap{padding:0 24px}
+      :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq) > .wrap{display:block}
+      :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq) > .wrap > [class*="-hd"]{position:static;margin-bottom:36px}
+      .stats-g{grid-template-columns:repeat(2,1fr)}
+      .stat-item:nth-child(3){border-left:none;padding-left:0}
+      .stat-item{border-top:1px solid var(--line)}
+      .stat-item:nth-child(-n+2){border-top:none}
+      .pain-g,.rec-g,.plans-g,.ai-pts{grid-template-columns:1fr}
+      .mth-step{grid-template-columns:1fr;gap:6px}
+      .cmp-table{min-width:560px!important}
+      .feat-card{grid-template-columns:56px 1fr}
+      .case-metrics{flex-wrap:wrap}
+      .footer-top{grid-template-columns:1fr}
+      .footer-nav-g{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      :is(#pain,#method,#features,#recommended,#services,#komon,#compare,#cases,#plans,#process,#team,#authority,#faq),#ai,#about{padding-top:72px;padding-bottom:72px}
+      #cta{padding-top:88px;padding-bottom:88px}
+      .hero-h1{font-size:28px}
+      .team-card{flex-direction:column}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .footer-links-b{justify-content:center}
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER -->
+<header id="hdr">
+  <div class="hdr-in">
+    <a href="https://www.thirdplace-63.fun/" class="logo">Third<span>Place</span></a>
+    <nav><ul class="hnav">
+      <li><a href="#pain">よくあるお悩み</a></li>
+      <li><a href="#features">選ばれる理由</a></li>
+      <li><a href="#recommended">おすすめな方</a></li>
+      <li><a href="#cases">成功事例</a></li>
+      <li><a href="#plans">料金プラン</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+    </ul></nav>
+    <div class="hctx">
+      <a href="#plans" class="btn btn--ghost">料金を見る</a>
+      <a href="#cta" class="btn btn--gold">無料相談する</a>
+    </div>
+    <button class="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================ SUBNAV -->
+<nav id="subnav">
+  <div class="subnav-in">
+    <a href="#pain">よくあるお悩み</a>
+    <a href="#method">設計思想・手法</a>
+    <a href="#features">選ばれる5つの理由</a>
+    <a href="#cases">成功事例</a>
+    <a href="#services">サービス内容</a>
+    <a href="#komon">SEO顧問</a>
+    <a href="#plans">料金プラン</a>
+    <a href="#process">ご支援の流れ</a>
+    <a href="#team">プロフィール</a>
+    <a href="#faq">よくある質問</a>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO -->
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-in">
+    <div class="hero-left">
+      <div class="hero-author-row">
+        <img src="https://www.thirdplace-63.fun/wp-content/uploads/2022/07/%E5%9C%A7%E7%B8%AEDIgital-SEO.png" alt="Digital SEO" class="hero-author-avatar">
+        <span class="hero-author-name">Digital SEO（星野）<em>業界歴15年のSEOコンサルタント</em></span>
+      </div>
+      <div class="hero-eyebrow">SEO Consulting for Small Business</div>
+      <h1 class="hero-h1">
+        個人事業主・中小企業向け<br><em>SEOコンサルティング</em><span class="hero-h1-s">（SEO顧問）</span>
+      </h1>
+      <p class="hero-sub">
+        VOL90,500のKWで1位、月間700万PVを達成したノウハウを、個人事業主・中小企業の規模に合わせてご提供します。初回相談は無料です。
+      </p>
+      <p class="hero-motto">If you try something, do it thoroughly.</p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn btn--gold">無料で相談する</a>
+        <a href="#plans" class="btn btn--ghost">料金プランを見る</a>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge"><span class="hero-badge-icon">✓</span>初回相談 無料</span>
+        <span class="hero-badge"><span class="hero-badge-icon">✓</span>月単位の契約に対応</span>
+        <span class="hero-badge"><span class="hero-badge-icon">✓</span>AI検索対応</span>
+      </div>
+    </div>
+    <!-- HERO FORM (seohacks style) -->
+    <div class="hero-form-box">
+      <div class="hero-form-title"><span>【無料】</span>SEOコンサル・SEO顧問のご相談</div>
+      <form action="https://www.thirdplace-63.fun/contact/" method="get" target="_blank">
+        <div class="frow">
+          <input class="finput" type="text" name="sei" placeholder="姓*" required>
+          <input class="finput" type="text" name="mei" placeholder="名*" required>
+        </div>
+        <div class="frow full">
+          <input class="finput" type="email" name="email" placeholder="メールアドレス*" required>
+        </div>
+        <div class="frow full">
+          <input class="finput" type="text" name="company" placeholder="企業名・屋号">
+        </div>
+        <div class="frow full">
+          <input class="finput" type="url" name="url" placeholder="対象サイトURL">
+        </div>
+        <div class="frow full">
+          <textarea class="finput" name="detail" placeholder="相談内容の詳細"></textarea>
+        </div>
+        <label class="fchk">
+          <input type="checkbox" required>
+          <span>プライバシーポリシーに同意する</span>
+        </label>
+        <button type="submit" class="fsubmit">【無料】相談・問い合わせをする</button>
+      </form>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ============================================================ STATS -->
+<section id="stats">
+  <div class="wrap">
+    <div class="stats-g">
+      <div class="stat-item">
+        <div class="stat-n">15<sup>年</sup></div>
+        <div class="stat-l">SEOコンサルタント業界歴</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">700<em>万</em></div>
+        <div class="stat-l">EC支援先の月間最大PV</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">7<em>倍</em></div>
+        <div class="stat-l">最大オーガニック流入改善</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">0<em>円</em></div>
+        <div class="stat-l">初回相談・サイト診断</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PAIN -->
+<section id="pain" class="sec--off">
+  <div class="wrap">
+    <div class="pain-hd">
+      <span class="label">Problems</span>
+      <h2 class="h2">個人事業主・中小企業のSEO、<br>こんなお悩みはありませんか？</h2>
+    </div>
+    <div class="pain-g">
+      <div>
+        <div class="pain-cat-title">成果の伸び悩み</div>
+        <ul class="pain-list">
+          <li>記事を量産しているのに、検索順位が全然上がらない</li>
+          <li>アクセスは増えたのに、問い合わせ・売上に繋がらない</li>
+          <li>コアアップデートのたびに順位が不安定になる</li>
+          <li>有効なSEO戦略の立て方が分からない</li>
+        </ul>
+      </div>
+      <div>
+        <div class="pain-cat-title">外注・リソースの課題</div>
+        <ul class="pain-list">
+          <li>SEO会社に頼んでいるが、何をやっているか分からない</li>
+          <li>提案ばかりで実装してもらえず、成果が出ない</li>
+          <li>担当は自分一人で、SEOの専門知識を持つ人がいない</li>
+          <li>大手のSEO会社は月額が高く、小さなサイトでは頼みにくい</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pain-resolve">
+      <p>そのお悩み、<em>ThirdPlaceが解決します。</em></p>
+      <small>まずは現状のサイト診断から。初回相談は無料です。</small>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-g">
+      <div class="about-img fade-up">
+        <img src="https://www.thirdplace-63.fun/wp-content/uploads/2022/07/%E5%9C%A7%E7%B8%AEDIgital-SEO.png" alt="Digital SEO – Hoshino" loading="lazy">
+        <div class="about-img-overlay"></div>
+        <div class="about-img-caption">SEO × <em>Creative</em></div>
+      </div>
+      <div class="fade-up">
+        <span class="label">About the Service</span>
+        <h2 class="h2">SEOコンサルティングとは何か。</h2>
+        <p class="lead">SEO（検索エンジン最適化）は、「順位を上げること」が目的ではありません。ユーザーが抱える課題を解決するコンテンツを届け、集客を通じて<strong>事業の収益を最大化すること</strong>が本質です。「正論の向こう側」——Googleではなく、検索エンジンの先にいるユーザーに届けることを最重視します。</p>
+        <p class="lead" style="margin-top:14px">「事業の2番目のファンになる」がThirdPlaceの信条。顧客のヒト・モノ・コトを深く理解し、<strong>強みを尖らせる場所をキーワードでフィルタリング</strong>することで、アパレルEC月間700万PV・ネイルEC楽天超えなど、再現性ある成果を出してきました。</p>
+        <p class="lead" style="margin-top:14px">個人事業主・中小企業のSEOは、大企業と同じ量の記事や予算では勝てません。強みを尖らせる場所をキーワードで選び、少ない施策を確実に成果へつなげる設計が重要です。</p>
+        <div style="margin-top:28px">
+          <a href="#cta" class="btn btn--gold">無料で相談する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ METHOD -->
+<section id="method" class="sec--blk sec">
+  <div class="wrap">
+    <div class="mth-hd fade-up">
+      <span class="label">Our Methodology</span>
+      <h2 class="h2 h2--wh">「想像力 × 一次情報 × ツール」<br>ThirdPlaceのSEO設計思想</h2>
+      <p class="lead lead--wh" style="max-width:640px;margin:16px auto 0">SEOの目的は順位を上げることではなく、収益を最大化すること。強みを尖らせ、どこで戦うかをキーワードでフィルタリングする ——「正論の向こう側」にある戦略が、成果を出します。</p>
+    </div>
+    <div class="mth-steps fade-up">
+      <div class="mth-step">
+        <div class="mth-step-num">STEP 01</div>
+        <div class="mth-step-icon">🔍</div>
+        <div class="mth-step-label">現状分析<small>As is 可視化</small></div>
+        <div class="mth-step-body">競合比較・順位・流入をデータで可視化。「勝てる領域」と「改修インパクトが大きい課題」を明確化する</div>
+      </div>
+      <div class="mth-arrow">›</div>
+      <div class="mth-step">
+        <div class="mth-step-num">STEP 02</div>
+        <div class="mth-step-icon">🎯</div>
+        <div class="mth-step-label">戦略設計<small>To be 設定</small></div>
+        <div class="mth-step-body">KPI・対策KW・優先施策を顧客の強みと擦り合わせて決定。3〜6ヶ月のロードマップを策定する</div>
+      </div>
+      <div class="mth-arrow">›</div>
+      <div class="mth-step">
+        <div class="mth-step-num">STEP 03</div>
+        <div class="mth-step-icon">⚙️</div>
+        <div class="mth-step-label">実装・制作<small>施策実行</small></div>
+        <div class="mth-step-body">ディレクトリ設計・内部リンク・メタ要素・コンテンツ制作まで一気通貫で実行する</div>
+      </div>
+      <div class="mth-arrow">›</div>
+      <div class="mth-step">
+        <div class="mth-step-num">STEP 04</div>
+        <div class="mth-step-icon">📊</div>
+        <div class="mth-step-label">効果測定<small>検証・分析</small></div>
+        <div class="mth-step-body">順位変動・流入・CV・カテゴリ平均順位を追跡。クリティカルな改善施策を特定する</div>
+      </div>
+      <div class="mth-arrow">›</div>
+      <div class="mth-step">
+        <div class="mth-step-num">STEP 05</div>
+        <div class="mth-step-icon">🚀</div>
+        <div class="mth-step-label">改善・自走化<small>内製化支援</small></div>
+        <div class="mth-step-body">PDCAを高速で回しながら、最終的には顧客が自走できる体制を構築する</div>
+      </div>
+    </div>
+    <div class="mth-heatmap fade-up">
+      <div class="mth-heatmap-title">キーワード順位ヒートマップ（As is / To be 可視化）— 実支援事例イメージ</div>
+      <div style="overflow-x:auto">
+        <table class="mth-heat-table">
+          <thead>
+            <tr>
+              <th>キーワード</th>
+              <th>検索VOL</th>
+              <th>支援先（As is）</th>
+              <th>競合A</th>
+              <th>競合B</th>
+              <th>To be 目標</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ブランド買取</td>
+              <td>8,100</td>
+              <td class="h-miss">18位</td>
+              <td class="h-top">1位</td>
+              <td class="h-mid">6位</td>
+              <td class="h-goal">Top 5</td>
+            </tr>
+            <tr>
+              <td>ロレックス 買取</td>
+              <td>3,600</td>
+              <td class="h-top">2位 ✓</td>
+              <td class="h-mid">5位</td>
+              <td class="h-miss">15位</td>
+              <td class="h-goal">1位維持</td>
+            </tr>
+            <tr>
+              <td>時計 買取 おすすめ</td>
+              <td>1,900</td>
+              <td class="h-miss">圏外</td>
+              <td class="h-miss">圏外</td>
+              <td class="h-mid">9位</td>
+              <td class="h-goal">記事で対策</td>
+            </tr>
+            <tr>
+              <td>ロレックス デイトナ 買取相場</td>
+              <td>720</td>
+              <td class="h-mid">8位</td>
+              <td class="h-top">3位</td>
+              <td class="h-miss">圏外</td>
+              <td class="h-goal">Top 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mth-heat-note">※ 実際のブランド買取サイト支援事例をもとにした可視化イメージです（数値は一部変更）。この分析から「時計カテゴリを徹底的に尖らせる」初期戦略を立案し、その後ビッグKWへ横展開。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FEATURES -->
+<section id="features" class="sec--dk sec">
+  <div class="wrap">
+    <div class="feat-hd fade-up">
+      <span class="label">Why ThirdPlace</span>
+      <h2 class="h2 h2--wh">選ばれる、5つの理由。</h2>
+    </div>
+    <div class="feat-g">
+      <div class="feat-card fade-up">
+        <div class="feat-no">REASON 01</div>
+        <div class="feat-icon">🎯</div>
+        <h3 class="feat-title">事業成果から逆算する<br>「戦略設計力」</h3>
+        <p class="feat-body">アクセス数・順位ではなく、売上・リード・CVに直結するSEO戦略を設計。競合分析・キーワードマップ・コンテンツ計画まで、KGIから逆算した最短ルートを提示します。</p>
+        <div class="feat-tags"><span class="feat-tag">競合分析</span><span class="feat-tag">KPI設計</span><span class="feat-tag">ロードマップ</span></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-no">REASON 02</div>
+        <div class="feat-icon">✍️</div>
+        <h3 class="feat-title">SEO×クリエイティブの<br>「実行力」</h3>
+        <p class="feat-body">提案だけで終わらない。コンテンツ制作・構成設計・内部対策まで、実際に手を動かして成果に繋げます。メディア運営で蓄積した「読まれる・検索される」コンテンツ制作のノウハウが強みです。</p>
+        <div class="feat-tags"><span class="feat-tag">コンテンツ制作</span><span class="feat-tag">記事ライティング</span></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-no">REASON 03</div>
+        <div class="feat-icon">🤖</div>
+        <h3 class="feat-title">AI時代に対応した<br>「最新知見」</h3>
+        <p class="feat-body">ChatGPT・Gemini・Perplexityなど、AI検索が台頭する現代。AEO（回答エンジン最適化）・LLMO（大規模言語モデル最適化）にも対応し、次の検索体験に向けた戦略を今から構築します。</p>
+        <div class="feat-tags"><span class="feat-tag">AEO</span><span class="feat-tag">LLMO</span><span class="feat-tag">AI検索最適化</span></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-no">REASON 04</div>
+        <div class="feat-icon">🔄</div>
+        <h3 class="feat-title">施策から実装まで<br>「伴走型サポート」</h3>
+        <p class="feat-body">SEO施策は提案してから終わりではありません。実装進捗の管理・スケジューリング・PDCAサイクルまで、忙しいマーケ担当者が本業に集中できるよう一貫してサポートします。</p>
+        <div class="feat-tags"><span class="feat-tag">進捗管理</span><span class="feat-tag">実装支援</span></div>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-no">REASON 05</div>
+        <div class="feat-icon">📈</div>
+        <h3 class="feat-title">外注に頼らない<br>「内製化支援」</h3>
+        <p class="feat-body">最終的には自走できるSEO体制の構築を支援します。コンサルティングを通じてノウハウをインプットし、段階的に内製化できるよう丁寧にサポートします。</p>
+        <div class="feat-tags"><span class="feat-tag">内製化支援</span><span class="feat-tag">SEO研修</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ RECOMMENDED -->
+<section id="recommended" class="sec--off sec">
+  <div class="wrap">
+    <div class="rec-hd fade-up">
+      <span class="label">Who It Fits</span>
+      <h2 class="h2">こんな方に選ばれています。</h2>
+    </div>
+    <div class="rec-g">
+      <div class="rec-card fade-up">
+        <div class="rec-num">01</div>
+        <h3 class="rec-title">過去のSEO外注が合わなかった方</h3>
+        <p class="rec-body">「提案ばかりで動いてくれなかった」「何をやっているか分からなかった」という経験がある方。ThirdPlaceは伴走型の支援スタイルで、透明性を重視します。</p>
+      </div>
+      <div class="rec-card fade-up">
+        <div class="rec-num">02</div>
+        <h3 class="rec-title">最短で成果を出したい方</h3>
+        <p class="rec-body">複数の外注先とのやり取りコストを省き、戦略設計から実行まで一気通貫で任せたい方。コミュニケーションロスなく最速で成果を出せます。</p>
+      </div>
+      <div class="rec-card fade-up">
+        <div class="rec-num">03</div>
+        <h3 class="rec-title">コンバージョンに繋がるSEOを求める方</h3>
+        <p class="rec-body">「順位は上がっているのに売上に繋がらない」という方。アクセス数だけでなく、CVR改善・導線最適化まで込みで成果を設計します。</p>
+      </div>
+      <div class="rec-card fade-up">
+        <div class="rec-num">04</div>
+        <h3 class="rec-title">AI検索・LLMO対応も同時に進めたい方</h3>
+        <p class="rec-body">ChatGPTやPerplexityなどAI検索が普及する中、自社サービスをAI回答に載せたい方。AEO・LLMO対応を含む次世代SEO戦略を提案します。</p>
+      </div>
+      <div class="rec-card fade-up">
+        <div class="rec-num">05</div>
+        <h3 class="rec-title">SEOを内製化したい方</h3>
+        <p class="rec-body">外注依存から脱却し、社内にSEOのノウハウを蓄積したい方。支援を通じた実践的な学習機会を提供し、段階的な内製化をサポートします。</p>
+      </div>
+      <div class="rec-card fade-up">
+        <div class="rec-num">06</div>
+        <h3 class="rec-title">個人事業主・中小企業の方</h3>
+        <p class="rec-body">大手SEO会社だと費用が高すぎる、でも本格的なSEO支援を受けたい個人事業主・中小企業の方。サイトの規模に合わせたリーズナブルなプランをご用意しています。</p>
+      </div>
+    </div>
+    <div class="rec-ng fade-up">
+      <div class="pain-cat-title">向いていない方（ご依頼をお受けできないケース）</div>
+      <ul class="pain-list">
+        <li>成果報酬のみでの依頼を希望される方</li>
+        <li>検索順位や成果の保証を求める方</li>
+        <li>被リンクの購入など、検索エンジンのガイドラインに反する手法を希望される方</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SERVICES -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="svc-hd">
+      <span class="label">Service Contents</span>
+      <h2 class="h2">個人事業主・中小企業向けSEOコンサルティングの内容</h2>
+      <p class="lead">お客様の状況・目標に応じて、柔軟にサポート内容を調整します。</p>
+    </div>
+    <div class="svc-item fade-up">
+      <div class="svc-num">SVC<br>01</div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=75" alt="SEO戦略設計・キーワード調査" class="svc-img" loading="lazy">
+        <h3 class="svc-content-title">SEO戦略設計・キーワード調査</h3>
+        <p class="svc-body">事業目標・ターゲットユーザー・競合状況をヒアリングした上で、SEMrushなどのデータをもとにキーワードマップと対策優先順位を設計。「何から手をつければいいか分からない」状態を解消し、3〜6ヶ月の具体的なロードマップを作成します。</p>
+        <div class="svc-chips"><span class="chip">競合ドメイン分析</span><span class="chip">キーワードマスターリスト</span><span class="chip">コンテンツギャップ分析</span><span class="chip">SEO戦略書作成</span></div>
+      </div>
+    </div>
+    <div class="svc-item fade-up">
+      <div class="svc-num">SVC<br>02</div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=75" alt="コンテンツ制作・SEO記事ライティング" class="svc-img" loading="lazy">
+        <h3 class="svc-content-title">コンテンツ制作・SEO記事ライティング</h3>
+        <p class="svc-body">検索意図を徹底的に分析した上で、「読まれる・シェアされる・上位表示される」コンテンツを制作。構成案作成から執筆・公開まで一貫対応可能。AI×クリエイティブを活用しながら、独自性の高いコンテンツを効率的に生産します。</p>
+        <div class="svc-chips"><span class="chip">構成案作成</span><span class="chip">記事ライティング</span><span class="chip">既存記事リライト</span><span class="chip">画像・図表制作</span><span class="chip">WordPress入稿</span></div>
+      </div>
+    </div>
+    <div class="svc-item fade-up">
+      <div class="svc-num">SVC<br>03</div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=900&q=75" alt="テクニカルSEO診断・改善" class="svc-img" loading="lazy">
+        <h3 class="svc-content-title">テクニカルSEO診断・改善</h3>
+        <p class="svc-body">クロール・インデックス・ページ速度・構造化データなど、技術的なSEO課題を特定し、優先度付きの改善提案を行います。サイト構造の問題が上位表示を妨げているケースは多く、テクニカル対策は上位表示の土台となります。</p>
+        <div class="svc-chips"><span class="chip">サイト診断レポート</span><span class="chip">Core Web Vitals改善</span><span class="chip">構造化データ設定</span><span class="chip">インデックス最適化</span></div>
+      </div>
+    </div>
+    <div class="svc-item fade-up">
+      <div class="svc-num">SVC<br>04</div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=75" alt="効果測定・月次レポーティング" class="svc-img" loading="lazy">
+        <h3 class="svc-content-title">効果測定・月次レポーティング</h3>
+        <p class="svc-body">Google Analytics・Search Consoleのデータをもとに、順位変動・流入数・CVR・施策の効果を可視化したレポートを毎月提出。「何をやって、どんな成果が出たか」を明確にし、次の施策判断を数値ベースで行えるようにします。</p>
+        <div class="svc-chips"><span class="chip">月次SEOレポート</span><span class="chip">順位追跡レポート</span><span class="chip">PDCAサイクル管理</span><span class="chip">定例ミーティング（月1回）</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ KOMON -->
+<section id="komon" class="sec--off sec">
+  <div class="wrap">
+    <div class="pain-hd fade-up">
+      <span class="label">SEO Advisor</span>
+      <h2 class="h2">SEO顧問（月額）で相談できること・できないこと</h2>
+      <p class="lead">SEO顧問は、毎月の判断を一緒に考える契約です。記事の執筆や実装までまとめて任せたい方は、伴走プラン（Standard以上）をご検討ください。</p>
+    </div>
+    <div class="pain-g">
+      <div>
+        <div class="pain-cat-title">相談できること</div>
+        <ul class="ok-list">
+          <li>取り組むキーワード・記事の優先順位の判断</li>
+          <li>Search Console・GA4の数値の読み方と、次の一手</li>
+          <li>コアアップデート後の変動の見立てと対処方針</li>
+          <li>記事・ページの構成案、リライトの要否</li>
+          <li>依頼中の制作会社やSEO会社の提案のセカンドオピニオン</li>
+          <li>社内の担当者へのSEOの教え方（内製化）</li>
+        </ul>
+      </div>
+      <div>
+        <div class="pain-cat-title">範囲外のこと</div>
+        <ul class="pain-list">
+          <li>順位や成果の保証</li>
+          <li>記事の執筆・サイトの実装の代行（伴走プランで対応）</li>
+          <li>無制限のご対応（プランごとに稼働の上限があります）</li>
+        </ul>
+      </div>
+    </div>
+    <p class="komon-note">SEO顧問は、Starterプラン（月額30,000円〜・税抜）が該当します。<a href="#plans">料金プランを見る →</a></p>
+  </div>
+</section>
+
+<!-- ============================================================ COMPARE -->
+<section id="compare" class="sec--dk sec">
+  <div class="wrap">
+    <div class="cmp-hd fade-up">
+      <span class="label">Comparison</span>
+      <h2 class="h2 h2--wh">大手SEO会社・生成AIとの違い</h2>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="cmp-table" style="min-width:760px">
+        <thead>
+          <tr>
+            <th style="text-align:left">比較ポイント</th>
+            <th class="col-tp">ThirdPlace</th>
+            <th>大手SEO会社</th>
+            <th>制作会社のSEO</th>
+            <th>生成AIで自力</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>戦略設計〜実行まで一貫対応</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">△</span> 提案中心</td>
+            <td><span class="cmp-no">✕</span> 制作のみ</td>
+            <td><span class="cmp-no">✕</span> 自分で実行</td>
+          </tr>
+          <tr>
+            <td>AI検索（AEO/LLMO）対応</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">△</span> 対応中</td>
+            <td><span class="cmp-no">✕</span> 非対応</td>
+            <td><span class="cmp-tri">△</span> 情報収集のみ</td>
+          </tr>
+          <tr>
+            <td>コンテンツ制作まで対応</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">△</span> 別料金</td>
+            <td><span class="cmp-tri">△</span> 簡易のみ</td>
+            <td><span class="cmp-tri">△</span> 下書きのみ</td>
+          </tr>
+          <tr>
+            <td>個人・スモールビジネス対応</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-no">✕</span> 月40万〜</td>
+            <td><span class="cmp-tri">△</span></td>
+            <td><span class="cmp-yes">◎</span> 低コスト</td>
+          </tr>
+          <tr>
+            <td>担当者が直接対応（窓口一本化）</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">△</span> 担当が変わる</td>
+            <td><span class="cmp-tri">△</span></td>
+            <td><span class="cmp-no">✕</span></td>
+          </tr>
+          <tr>
+            <td>内製化支援・教育サポート</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">△</span> オプション</td>
+            <td><span class="cmp-no">✕</span></td>
+            <td><span class="cmp-tri">△</span> 学習の補助</td>
+          </tr>
+          <tr>
+            <td>Search Console・GA4の実データを見た優先順位の判断</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">○</span></td>
+            <td><span class="cmp-tri">△</span></td>
+            <td><span class="cmp-tri">△</span> 入力次第</td>
+          </tr>
+          <tr>
+            <td>判断に責任を持つ担当者がいる</td>
+            <td class="col-tp"><span class="cmp-yes">◎</span></td>
+            <td><span class="cmp-tri">○</span></td>
+            <td><span class="cmp-tri">○</span></td>
+            <td><span class="cmp-no">✕</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CASES -->
+<section id="cases" class="sec--off sec">
+  <div class="wrap">
+    <div class="cases-hd fade-up">
+      <span class="label">Success Cases</span>
+      <h2 class="h2">成功事例</h2>
+      <p class="lead">実際の支援・自社メディア運営で得られた成果の一部をご紹介します。規模の大きな事例ですが、キーワードの選び方と差別化の考え方は、小さなサイトにもそのまま使えます。</p>
+    </div>
+    <div class="cases-g">
+      <div class="case-card fade-up">
+        <div class="case-body">
+          <div class="case-ind">アパレルEC / SEOコンサルティング</div>
+          <h3 class="case-title">月間700万PV達成。VOL41,000のKWで1位獲得</h3>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-num">5×</div><div class="case-metric-label">自然検索流入（4ヵ月）</div></div>
+            <div class="case-metric"><div class="case-metric-num">700万</div><div class="case-metric-label">月間平均PV</div></div>
+            <div class="case-metric"><div class="case-metric-num">1位</div><div class="case-metric-label">VOL41,000 KW</div></div>
+          </div>
+          <p class="case-text">キーワードの「As is/To be」可視化からディレクトリ設計・内部リンク・メタ要素まで徹底設計。ZOZOTOWN・楽天との差別化戦略として潜在層向けコンテンツを強化し、施策開始から4ヵ月で自然検索流入が約5倍に。</p>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-body">
+          <div class="case-ind">ネイル販売EC / SEOコンサルティング</div>
+          <h3 class="case-title">楽天・Amazonを超えVOL74,000 KWで1位。流入3倍</h3>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-num">3×</div><div class="case-metric-label">自然検索流入（約半年）</div></div>
+            <div class="case-metric"><div class="case-metric-num">600万</div><div class="case-metric-label">月間平均PV</div></div>
+            <div class="case-metric"><div class="case-metric-num">1位</div><div class="case-metric-label">VOL74,000 KW</div></div>
+          </div>
+          <p class="case-text">モール型サイトには真っ向勝負せず、「専門性」で差別化。トレンドキーワード先行作成（「韓国ネイル」「BTSネイル」等）と爪ケア記事で潜在層を獲得。約半年で流入3倍、月間30万UUを達成し楽天・Amazon超えを実現。</p>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-body">
+          <div class="case-ind">オウンドメディア / SEO戦略支援</div>
+          <h3 class="case-title">月150万PV→450万PVへ。VOL90,500 KWで1位獲得</h3>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-num">3×</div><div class="case-metric-label">月間PV（約1年）</div></div>
+            <div class="case-metric"><div class="case-metric-num">約7×</div><div class="case-metric-label">オーガニック流入</div></div>
+            <div class="case-metric"><div class="case-metric-num">1位</div><div class="case-metric-label">VOL90,500 KW</div></div>
+          </div>
+          <p class="case-text">美容系ECサイトにおいて検索VOL90,500・60,500のビッグキーワードで1位獲得。オーガニック流入は約7倍、月150万PVから約1年で450万PVへ成長。Web Designingでオウンドメディアの成功事例として特集掲載。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ AI -->
+<section id="ai" class="sec">
+  <div class="ai-glow"></div>
+  <div class="wrap">
+    <div class="ai-in">
+      <div class="ai-img fade-up">
+        <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=800&q=75" alt="AI時代のSEO" loading="lazy">
+      </div>
+      <div class="fade-up">
+        <div class="ai-badge">✦ AI時代のSEO対応</div>
+        <h2 class="ai-title">検索の常識が、<br>変わっている。</h2>
+        <p class="ai-lead">ChatGPT・Perplexity・Geminiなど、AI検索が急速に普及しています。「Googleの検索結果上位に表示させる」だけでは不十分な時代に。ThirdPlaceはAI検索に引用されるサイト設計（AEO・LLMO）を含めた次世代SEO戦略を提供します。</p>
+        <div class="ai-pts">
+          <div class="ai-pt">
+            <div class="ai-pt-icon">🔍</div>
+            <div>
+              <div class="ai-pt-title">AEO（回答エンジン最適化）</div>
+              <div class="ai-pt-body">ChatGPT・Perplexityなど生成AI検索で引用されるコンテンツ設計。構造化データ・E-E-A-T強化でAIに「信頼できる情報源」として認識させます。</div>
+            </div>
+          </div>
+          <div class="ai-pt">
+            <div class="ai-pt-icon">🧠</div>
+            <div>
+              <div class="ai-pt-title">LLMO（LLM向け最適化）</div>
+              <div class="ai-pt-body">大規模言語モデルに正確に認識・引用されるための情報設計。ブランド認知をAI回答の中でも獲得します。</div>
+            </div>
+          </div>
+          <div class="ai-pt">
+            <div class="ai-pt-icon">⚡</div>
+            <div>
+              <div class="ai-pt-title">AI×コンテンツ制作</div>
+              <div class="ai-pt-body">AIを活用した高速・高品質なコンテンツ制作フローを構築。量と質を両立しながら競合を上回るコンテンツ戦略を実行します。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PLANS -->
+<section id="plans" class="sec--off sec">
+  <div class="wrap">
+    <div class="plans-hd fade-up">
+      <span class="label">Pricing Plans</span>
+      <h2 class="h2">料金プランと契約条件</h2>
+      <p class="lead">まずはお気軽にご相談ください。状況に応じてカスタマイズプランもご提案可能です。</p>
+    </div>
+    <div class="plans-g">
+      <div class="plan-card fade-up">
+        <div class="plan-name">Starter<span style="font-size:12px;font-weight:500;opacity:.7"> / SEO顧問</span></div>
+        <div class="plan-price">¥30,000</div>
+        <div class="plan-period">/ 月〜（税抜）</div>
+        <p class="plan-desc">SEOを始めたばかり、または個人・スモールサイト向けの入門プラン。月額のSEO顧問として、判断の相談に対応します。</p>
+        <ul class="plan-list">
+          <li>初期サイト診断・レポート</li>
+          <li>キーワード調査（〜50KW）</li>
+          <li>月次SEOレポート</li>
+          <li>チャットサポート</li>
+        </ul>
+        <a href="#cta" class="btn btn--dk btn--full">相談してみる</a>
+      </div>
+      <div class="plan-card plan-card--ft fade-up">
+        <div class="plan-badge">人気プラン</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price" style="color:#fff">¥80,000</div>
+        <div class="plan-period">/ 月〜（税抜）</div>
+        <p class="plan-desc">中小企業・個人事業主のWebサイト成長を本気でサポートするプラン。</p>
+        <ul class="plan-list">
+          <li>SEO戦略設計・ロードマップ</li>
+          <li>キーワード調査（〜200KW）</li>
+          <li>月4本 コンテンツ制作</li>
+          <li>テクニカルSEO対応</li>
+          <li>月次レポート + 定例会（月1回）</li>
+          <li>チャット・メールサポート</li>
+        </ul>
+        <a href="#cta" class="btn btn--gold btn--full">無料で相談する</a>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">¥150,000</div>
+        <div class="plan-period">/ 月〜（税抜）</div>
+        <p class="plan-desc">積極的な成長を目指す事業者向けの全方位支援プラン。</p>
+        <ul class="plan-list">
+          <li>Standardプランすべて含む</li>
+          <li>月8本 コンテンツ制作</li>
+          <li>AI検索（AEO/LLMO）対応</li>
+          <li>競合モニタリング（月次）</li>
+          <li>週次進捗報告</li>
+          <li>優先サポート対応</li>
+        </ul>
+        <a href="#cta" class="btn btn--dk btn--full">相談してみる</a>
+      </div>
+      <div class="plan-card fade-up">
+        <div class="plan-name">Spot</div>
+        <div class="plan-price">¥50,000</div>
+        <div class="plan-period">/ 回〜（税抜）</div>
+        <p class="plan-desc">単発でのSEO相談・サイト診断・研修対応などスポット依頼向け。</p>
+        <ul class="plan-list">
+          <li>サイト診断レポート（1回）</li>
+          <li>SEO戦略壁打ち相談</li>
+          <li>キーワード調査（スポット）</li>
+          <li>社内SEO研修（2〜3h）</li>
+        </ul>
+        <a href="#cta" class="btn btn--dk btn--full">詳しく聞く</a>
+        <p class="plan-note">契約縛りなし・単発対応</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:12px;color:#999">※ 表示金額は税抜きです。サイト規模・競合難易度により変動する場合があります。</p>
+    <table class="terms fade-up">
+      <tbody>
+        <tr><th>契約の単位</th><td>月額。月単位でのご契約に対応しています。</td></tr>
+        <tr><th>最低契約期間</th><td>ありません（月単位）。</td></tr>
+        <tr><th>解約</th><td>前月末までにご連絡いただければ、翌月分から終了します。</td></tr>
+        <tr><th>成果報酬</th><td>成果報酬型には対応していません。月額の固定でご支援します。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ PROCESS -->
+<section id="process" class="sec">
+  <div class="wrap">
+    <div class="proc-hd fade-up">
+      <span class="label">How It Works</span>
+      <h2 class="h2">ご支援の流れ</h2>
+    </div>
+    <div class="proc-g">
+      <div class="proc-step active fade-up">
+        <div class="proc-num">01</div>
+        <div>
+          <div class="proc-title">無料相談・ヒアリング</div>
+          <div class="proc-body">現状の課題・目標・サイト状況をZoomで約60分ヒアリングし、主要ページの簡易診断を行います（無料）。まずはお気軽に。</div>
+        </div>
+      </div>
+      <div class="proc-step fade-up">
+        <div class="proc-num">02</div>
+        <div>
+          <div class="proc-title">サイト診断・ご提案</div>
+          <div class="proc-body">SEMrushを用いた分析をもとに、課題と戦略方針を提示します。</div>
+        </div>
+      </div>
+      <div class="proc-step fade-up">
+        <div class="proc-num">03</div>
+        <div>
+          <div class="proc-title">プラン決定・契約</div>
+          <div class="proc-body">最適なプランを選択。月単位での契約に対応しています。</div>
+        </div>
+      </div>
+      <div class="proc-step fade-up">
+        <div class="proc-num">04</div>
+        <div>
+          <div class="proc-title">施策実行・月次レビュー</div>
+          <div class="proc-body">戦略に基づき施策を実行。定例でPDCAを回し継続的に改善します。</div>
+        </div>
+      </div>
+    </div>
+    <p class="komon-note">ご契約後は、月次レポートと定例（Standard以上は月1回）、チャット・メールで随時ご相談いただけます（範囲はプランにより異なります）。</p>
+  </div>
+</section>
+
+<!-- ============================================================ TEAM -->
+<section id="team" class="sec--dk sec">
+  <div class="wrap">
+    <div class="team-hd fade-up">
+      <span class="label">Profile</span>
+      <h2 class="h2 h2--wh">プロフィール</h2>
+      <p class="lead lead--wh">ご相談から実行まで、星野が直接担当します。</p>
+    </div>
+    <div class="team-g team-g--one">
+      <div class="team-card fade-up">
+        <img src="https://www.thirdplace-63.fun/wp-content/uploads/2022/07/%E5%9C%A7%E7%B8%AEDIgital-SEO.png" alt="Digital SEO / Hoshino" class="team-avatar" loading="lazy">
+        <div>
+          <div class="team-name">Digital SEO（星野）</div>
+          <div class="team-role">SEOコンサルタント / X: <a href="https://twitter.com/digital_seo100" target="_blank" style="color:var(--gold)">@digital_seo100</a></div>
+          <p class="team-bio">業界歴15年（SEO歴2010年〜）。役者→大手SEO会社→某公共事業で局長→上場企業マーケター（複業でCA・大手SEOベンダー・StockSunのパートナー）として活動。VOL90,500の美容系EC・VOL74,000のネイルECなど複数のビッグKWで1位獲得実績。EC・データベース型サイトのテクニカルSEOも得意とする。「事業の2番目のファンになる」をモットーに伴走型コンサルを実践。FP2級・証券外務員・相続診断士・マナビDX Quest修了。</p>
+          <div class="team-tags" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+            <span style="font-size:11px;padding:3px 10px;background:var(--gold-pale);border:1px solid rgba(201,162,39,.3);border-radius:20px;color:var(--gold)">EC / DBサイトSEO</span>
+            <span style="font-size:11px;padding:3px 10px;background:var(--gold-pale);border:1px solid rgba(201,162,39,.3);border-radius:20px;color:var(--gold)">テクニカルSEO</span>
+            <span style="font-size:11px;padding:3px 10px;background:var(--gold-pale);border:1px solid rgba(201,162,39,.3);border-radius:20px;color:var(--gold)">コンテンツ戦略</span>
+            <span style="font-size:11px;padding:3px 10px;background:var(--gold-pale);border:1px solid rgba(201,162,39,.3);border-radius:20px;color:var(--gold)">AI検索対応</span>
+          </div>
+        </div>
+      </div>
+      <p class="team-partner-note fade-up">記事制作やテクニカルな実装が必要な場合は、外部パートナーと連携して対応します。窓口は星野が一本化します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ AUTHORITY -->
+<section id="authority" class="sec">
+  <div class="wrap">
+    <div class="auth-hd fade-up">
+      <span class="label">Media &amp; Authority</span>
+      <h2 class="h2">メディア実績・著書・登壇</h2>
+    </div>
+    <div class="auth-g">
+      <div class="auth-card fade-up">
+        <div class="auth-icon">📰</div>
+        <div>
+          <div class="auth-type">業界誌掲載</div>
+          <div class="auth-title">Web Designing — オウンドメディア成功事例として特集</div>
+          <div class="auth-sub">業界誌「Web Designing」にて、月間450万PVを達成したオウンドメディアのSEO成功事例として特集掲載。EC・データベース型サイトのSEO戦略が注目を集める。</div>
+        </div>
+      </div>
+      <div class="auth-card fade-up">
+        <div class="auth-icon">🎙️</div>
+        <div>
+          <div class="auth-type">メディアインタビュー</div>
+          <div class="auth-title">フリーランス名鑑 — インタビュー掲載</div>
+          <div class="auth-sub">フリーランス名鑑にてインタビュー掲載。「役者→公務員→SEOコンサルタント」という異色のキャリアと、副業から独立に至るまでのリアルな軌跡が紹介された。</div>
+        </div>
+      </div>
+      <div class="auth-card fade-up">
+        <div class="auth-icon">🐦</div>
+        <div>
+          <div class="auth-type">SNS / 情報発信</div>
+          <div class="auth-title">X（旧Twitter）@digital_seo100</div>
+          <div class="auth-sub">現場目線のSEO実践知見・EC/DBサイト事例・AI検索動向をXで継続発信。「SEOの目的は順位ではなく収益」「正論の向こう側」など独自フィロソフィーが業界で支持されている。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FAQ -->
+<section id="faq" class="sec--dk sec">
+  <div class="wrap">
+    <div class="faq-hd fade-up">
+      <span class="label">FAQ</span>
+      <h2 class="h2 h2--wh">よくあるご質問</h2>
+    </div>
+    <div class="faq-cols">
+      <div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>成果が出るまでにどのくらいかかりますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">一般的にSEOの効果が出始めるまでには3〜6ヶ月程度かかります。ただし、テクニカル改善など即効性の高い施策は1〜2ヶ月以内に変化が見えるケースもあります。初回ヒアリング時に目安をお伝えします。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>コンテンツ制作・実装まで対応していただけますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">はい、対応しています。Standardプラン以上では記事ライティング・構成案作成を含んでいます。WordPressへの入稿対応も可能ですのでご相談ください。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>スポット・単発のコンサルティングは可能ですか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">可能です。「SEO戦略の壁打ちがしたい」「サイト診断だけしてほしい」などのスポット相談も承っています。まずは無料相談からお気軽にご連絡ください。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>SEOの知識がなくても依頼できますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">もちろんです。SEO初心者の方でもわかりやすく説明しながら進めます。「SEOとは何か」から一緒に整理していきますのでご安心ください。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>個人事業主でも依頼できますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">はい。個人事業主・中小企業の方のご依頼を中心にお受けしています。Starterプランは、個人・スモールサイト向けの入門プランです。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>最低契約期間はありますか？解約はいつでもできますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">月単位でのご契約に対応しており、最低契約期間はありません。解約は、前月末までにご連絡いただければ、翌月分から終了します。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>成果報酬での依頼はできますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">成果報酬型には対応していません。SEOは順位や成果を保証できないため、月額の固定でご支援します。</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>AI検索（ChatGPT・Perplexity）への対応もできますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">対応しています。AEO・LLMOはPremiumプランに含まれており、StandardプランでもAI検索対応のオプション追加が可能です。AI検索への露出を高めたい方はご相談ください。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>他のSEO会社と並行して依頼することは可能ですか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">基本的に可能です。ただし施策が重複する場合があるため、現在の支援内容をお聞かせください。状況を確認した上で最適な進め方をご提案します。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>SEOを内製化したいが、サポートは可能ですか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">可能です。コンサルティングを通じてノウハウを社内にインプットし、段階的に自走できる体制を構築します。社内向けSEO研修（スポット）もご提供しています。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>予算や詳細が決まっていなくても相談できますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">問題ございません。現状のヒアリングをもとに、最適な施策と目安費用をご提案します。まずはお気軽にご相談ください。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>複数のサイトを相談できますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">複数サイトのご相談は、サイトの数や規模をうかがったうえで、個別にお見積りします。まずはお気軽にご相談ください。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>遠方・オンラインでも相談できますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">はい。ヒアリングはZoomで行いますので、全国どこからでもご相談いただけます。</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)"><span>生成AIで自分でSEOをやるのと、何が違いますか？</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p class="faq-a-in">生成AIは、記事案や調査の補助として有用です。ただし、御社のSearch ConsoleやGA4の実データを踏まえた優先順位の判断、検索結果の実際の構成の確認、アップデート後の変動の見立ては、経験に基づく判断が必要です。ThirdPlaceでは生成AIも活用しながら、判断と責任は人が持つ形でご支援します。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="wrap">
+    <div class="cta-in">
+      <p class="cta-eye">Free Consultation</p>
+      <h2 class="cta-h2">まず、話してみてください。<br><em>無料で相談できます。</em></h2>
+      <p class="cta-lead">サイト診断・現状ヒアリング・方向性のご提案まで、初回相談は完全無料。「相談だけ」でも大歓迎です。</p>
+      <div class="cta-btns">
+        <a href="https://www.thirdplace-63.fun/contact/" class="btn btn--gold" style="font-size:16px;padding:18px 48px" target="_blank">無料で相談する →</a>
+        <a href="#plans" class="btn btn--ghost">料金プランを見る</a>
+      </div>
+      <p class="cta-note">※ Zoomによるオンライン対応。全国からご相談いただけます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-logo-wrap">
+        <a href="https://www.thirdplace-63.fun/" class="logo">Third<span>Place</span></a>
+        <p class="footer-tagline">Web副業×公務員で<br>「もう1つの居場所」を掴む</p>
+      </div>
+      <div class="footer-nav-g">
+        <div>
+          <div class="footer-nav-head">サービス</div>
+          <ul class="footer-nav-list">
+            <li><a href="#services">SEO戦略設計</a></li>
+            <li><a href="#services">コンテンツ制作</a></li>
+            <li><a href="#services">テクニカルSEO</a></li>
+            <li><a href="#komon">SEO顧問</a></li>
+            <li><a href="#ai">AI検索対応（AEO/LLMO）</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-nav-head">情報</div>
+          <ul class="footer-nav-list">
+            <li><a href="#plans">料金プラン</a></li>
+            <li><a href="#cases">成功事例</a></li>
+            <li><a href="#team">プロフィール</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-nav-head">ThirdPlace</div>
+          <ul class="footer-nav-list">
+            <li><a href="https://www.thirdplace-63.fun/" target="_blank">ブログTOP</a></li>
+            <li><a href="https://www.thirdplace-63.fun/category/seo/" target="_blank">SEO記事一覧</a></li>
+            <li><a href="https://www.thirdplace-63.fun/contact/" target="_blank">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 ThirdPlace. All rights reserved.</p>
+      <ul class="footer-links-b">
+        <li><a href="https://www.thirdplace-63.fun/" target="_blank">ブログに戻る</a></li>
+        <li><a href="https://www.thirdplace-63.fun/contact/" target="_blank">プライバシーポリシー</a></li>
+        <li><a href="https://www.thirdplace-63.fun/contact/" target="_blank">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ JS -->
+<script>
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Header scroll
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    hdr.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Subnav active link
+  const sections = document.querySelectorAll('section[id]');
+  const subLinks = document.querySelectorAll('#subnav a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        subLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`#subnav a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => io.observe(s));
+
+  // Fade-up on scroll
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+  // Hamburger
+  const hamburger = document.querySelector('.hamburger');
+  const hnav = document.querySelector('.hnav');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hnav.style.display === 'flex';
+    Object.assign(hnav.style, {
+      display: isOpen ? 'none' : 'flex',
+      flexDirection: 'column',
+      position: 'absolute',
+      top: '64px',
+      left: '0',
+      right: '0',
+      background: '#fff',
+      padding: '16px 24px',
+      gap: '14px',
+      borderBottom: '1px solid #e5e5e5',
+      zIndex: '800'
+    });
+    if (isOpen) hnav.style.display = 'none';
+  });
+</script>
+</body>
+</html>
