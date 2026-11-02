@@ -425,9 +425,91 @@
       .sx{opacity:1!important}
       .about-marquee,#prog{display:none}
     }
+    /* ── イラスト（金のグラデーション線。入ると線が描かれ、常にゆっくり動く） ── */
+    .mth-step-icon,.feat-icon,.ai-pt-icon,.auth-icon{background:none;border:none;font-size:0;line-height:0;display:flex;align-items:center;justify-content:center}
+    .mth-step-icon{margin:4px 0 16px}.mth-step-icon .ic{width:104px;height:104px}
+    .feat-icon{width:auto;height:auto;margin-bottom:22px;justify-content:flex-start}.feat-icon .ic{width:112px;height:112px}
+    .ai-pt-icon{width:76px;height:76px;flex-shrink:0}.ai-pt-icon .ic{width:76px;height:76px}
+    .auth-icon{width:76px;height:76px;flex-shrink:0}.auth-icon .ic{width:76px;height:76px}
+    .ic{overflow:visible;filter:drop-shadow(0 0 14px rgba(201,162,39,.3))}
+    .ic *{transform-box:view-box}
+    .ic-bg{fill:url(#goldGlow);stroke:rgba(201,162,39,.35);stroke-width:.8}
+    .ic-ring{fill:none;stroke:url(#goldLine);stroke-width:1.2;stroke-dasharray:8 174;stroke-linecap:round;transform-origin:32px 32px;animation:icspin 9s linear infinite}
+    .ic .s{fill:none;stroke:url(#goldLine);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:160;stroke-dashoffset:160;transition:stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)}
+    .ic.on .s{stroke-dashoffset:0}
+    .ic .f{fill:url(#goldLine);opacity:0;transition:opacity .8s .9s}
+    .ic.on .f{opacity:1}
+    .mth-step:hover .ic,.feat-card:hover .ic,.ai-pt:hover .ic,.auth-card:hover .ic{filter:drop-shadow(0 0 22px rgba(201,162,39,.6))}
+    /* 個別の動き */
+    .ic .g{transform-origin:32px 32px;animation:icspin 14s linear infinite}
+    .ic .g2{transform-origin:32px 32px;animation:icspin 7s linear infinite reverse}
+    .ic .m-scan{animation:icscan 4.5s ease-in-out infinite}
+    .ic .tw{transform-box:fill-box;transform-origin:center;animation:ictw 2.4s ease-in-out infinite}
+    .ic .tw2{animation-delay:1.2s}
+    .ic .m-arrow{animation:ichit 2.8s cubic-bezier(.16,1,.3,1) infinite}
+    .ic .rp{transform-origin:32px 32px;animation:icripple 2.8s ease-out infinite;stroke-dashoffset:0!important}
+    .ic .m-core{transform-box:fill-box;transform-origin:center;animation:icpulse 2.8s ease-in-out infinite}
+    .ic .m-bar{transform-origin:0 47px;animation:icbar 2.6s cubic-bezier(.16,1,.3,1) infinite}
+    .ic .b2{animation-delay:.25s}.ic .b3{animation-delay:.5s}
+    .ic .m-pulse{transform-box:fill-box;transform-origin:center;animation:icpulse 1.8s ease-in-out infinite}
+    .ic .m-bob{animation:icbob 2.4s ease-in-out infinite}
+    .ic .m-flame{transform-origin:32px 45px;animation:icflame .35s ease-in-out infinite alternate}
+    .ic .m-flag{transform-origin:47px 20px;animation:icflag 1.6s ease-in-out infinite alternate}
+    .ic .m-write{transform-origin:16px 50px;animation:icwrite 1.4s ease-in-out infinite alternate}
+    .ic .m-ink{animation:icink 2.8s ease-in-out infinite}
+    .ic .m-spin-s{transform-origin:32px 32px;animation:icspin 6s linear infinite}
+    .ic .m-pins{animation:icblink 1.6s ease-in-out infinite}
+    .ic .m-loop{transform-origin:32px 32px;animation:icspin 5s linear infinite}
+    .ic .m-up{animation:icup 1.6s ease-in-out infinite}
+    .ic .fl{fill:none;stroke:url(#goldLine);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:2 4;animation:icflow 1.2s linear infinite}
+    .ic .n1,.ic .n2,.ic .n3,.ic .n4{transform-box:fill-box;transform-origin:center;animation:icpulse 2s ease-in-out infinite}
+    .ic .n2{animation-delay:.5s}.ic .n3{animation-delay:1s}.ic .n4{animation-delay:1.5s}
+    .ic .m-bolt{transform-box:fill-box;transform-origin:center;animation:icbolt 2.2s ease-in-out infinite}
+    .ic .m-page{transform-origin:32px 32px;animation:icpage 3.2s ease-in-out infinite}
+    .ic .wv{fill:none;stroke:url(#goldLine);stroke-width:1.8;stroke-linecap:round;opacity:0;animation:icwave 1.8s ease-out infinite}
+    .ic .w2{animation-delay:.45s}
+    .ic .d1,.ic .d2,.ic .d3{transform-box:fill-box;transform-origin:center;animation:icdot 1.2s ease-in-out infinite}
+    .ic .d2{animation-delay:.15s}.ic .d3{animation-delay:.3s}
+    @keyframes icspin{to{transform:rotate(360deg)}}
+    @keyframes icscan{0%,100%{transform:translate(0,0)}25%{transform:translate(4px,-2px)}50%{transform:translate(1px,-5px)}75%{transform:translate(-4px,-2px)}}
+    @keyframes ictw{0%,100%{transform:scale(.6) rotate(0);opacity:.5}50%{transform:scale(1.25) rotate(45deg);opacity:1}}
+    @keyframes ichit{0%{transform:translate(12px,-12px);opacity:0}15%{opacity:1}30%{transform:translate(0,0)}34%{transform:translate(1.5px,-1.5px)}38%,85%{transform:translate(0,0);opacity:1}100%{transform:translate(0,0);opacity:0}}
+    @keyframes icripple{0%,30%{transform:scale(1);opacity:0}34%{opacity:.8}100%{transform:scale(1.55);opacity:0}}
+    @keyframes icpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+    @keyframes icbar{0%{transform:scaleY(.2)}45%,80%{transform:scaleY(1)}100%{transform:scaleY(.2)}}
+    @keyframes icbob{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+    @keyframes icflame{from{transform:scaleY(.7);opacity:.7}to{transform:scaleY(1.2);opacity:1}}
+    @keyframes icflag{from{transform:skewY(-6deg)}to{transform:skewY(6deg)}}
+    @keyframes icwrite{from{transform:rotate(-4deg)}to{transform:rotate(5deg) translateX(3px)}}
+    @keyframes icink{0%{stroke-dasharray:0 40}60%,100%{stroke-dasharray:18 40}}
+    @keyframes icblink{0%,100%{opacity:.45}50%{opacity:1}}
+    @keyframes icup{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-3px)}}
+    @keyframes icflow{to{stroke-dashoffset:-12}}
+    @keyframes icbolt{0%,60%,100%{opacity:.55;transform:scale(1)}68%{opacity:1;transform:scale(1.18)}76%{opacity:.7}84%{opacity:1}}
+    @keyframes icpage{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+    @keyframes icwave{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+    @keyframes icdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+    @media(max-width:600px){.mth-step-icon .ic{width:88px;height:88px}.feat-icon .ic{width:96px;height:96px}}
+    @media(prefers-reduced-motion:reduce){.ic,.ic *{animation:none!important}.ic .s{stroke-dashoffset:0;transition:none}.ic .f{opacity:1}}
+
+    /* ── 読みやすさ：手順の説明文 ── */
+    .mth-step-body{font-size:13px;color:rgba(255,255,255,.82);line-height:1.85}
+    .mth-step-label{font-size:15px}
+
+    /* ── タグライン：「そのお悩み、ThirdPlaceが解決します。」 ── */
+    .pain-resolve{position:relative;overflow:hidden;padding:64px 32px;background:radial-gradient(ellipse 80% 120% at 50% 0%,rgba(201,162,39,.16) 0%,transparent 60%),var(--dark);border:1px solid rgba(201,162,39,.35)}
+    .pain-resolve::before,.pain-resolve::after{content:'';position:absolute;left:50%;width:min(420px,60%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .pain-resolve::before{top:28px}.pain-resolve::after{bottom:28px}
+    .pain-resolve p em{white-space:nowrap;display:inline-block}
+    .pain-resolve p{font-size:clamp(22px,4.4vw,48px);font-weight:900;line-height:1.35;letter-spacing:.02em}
+    .pain-resolve p em{background:linear-gradient(100deg,#b8891a 0%,#f6df8d 35%,#fff6d0 50%,#f6df8d 65%,#b8891a 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:tagshine 4.5s ease-in-out infinite}
+    .pain-resolve small{font-size:clamp(13px,1.5vw,16px);color:rgba(255,255,255,.75);margin-top:18px;letter-spacing:.04em}
+    @keyframes tagshine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+    @media(prefers-reduced-motion:reduce){.pain-resolve p em{animation:none}}
   </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="goldLine" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56"><stop offset="0" stop-color="#f6df8d"/><stop offset="1" stop-color="#b8891a"/></linearGradient><radialGradient id="goldGlow"><stop offset="0" stop-color="rgba(201,162,39,.26)"/><stop offset="1" stop-color="rgba(201,162,39,.03)"/></radialGradient></defs></svg>
 <div id="loader" aria-hidden="true"><div class="ld-word"><span>Third<em>Place</em></span></div><div class="ld-line"><i></i></div></div>
 <div id="prog"></div>
 
@@ -495,7 +577,7 @@
       <div class="hero-badges">
         <span class="hero-badge"><span class="hero-badge-icon">✓</span>初回相談 無料</span>
         <span class="hero-badge"><span class="hero-badge-icon">✓</span>月単位の契約に対応</span>
-        <span class="hero-badge"><span class="hero-badge-icon">🤖</span>AI検索対応</span>
+        <span class="hero-badge"><span class="hero-badge-icon">✓</span>AI検索対応</span>
       </div>
     </div>
     <!-- HERO FORM (seohacks style) -->
@@ -624,35 +706,35 @@
     <div class="mth-steps fade-up">
       <div class="mth-step">
         <div class="mth-step-num">STEP 01</div>
-        <div class="mth-step-icon">🔍</div>
+        <div class="mth-step-icon"><svg class="ic ic-search" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="m-scan"><circle class="s" cx="28" cy="28" r="11"/><path class="s" d="M36 36 L47 47" /><path class="s" d="M23 32v-3M28 32v-8M33 32v-5" /></g><path class="f tw" d="M46.00 11.50 L47.44 14.56 L50.50 16.00 L47.44 17.44 L46.00 20.50 L44.56 17.44 L41.50 16.00 L44.56 14.56Z"/></svg></div>
         <div class="mth-step-label">現状分析<small>As is 可視化</small></div>
         <div class="mth-step-body">競合比較・順位・流入をデータで可視化。「勝てる領域」と「改修インパクトが大きい課題」を明確化する</div>
       </div>
       <div class="mth-arrow">›</div>
       <div class="mth-step">
         <div class="mth-step-num">STEP 02</div>
-        <div class="mth-step-icon">🎯</div>
+        <div class="mth-step-icon"><svg class="ic ic-target" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><circle class="s rp" cx="32" cy="32" r="17"/><circle class="s" cx="32" cy="32" r="17"/><circle class="s" cx="32" cy="32" r="10"/><circle class="f m-core" cx="32" cy="32" r="3"/><g class="m-arrow"><path class="s" d="M32 32 L47 17" /><path class="s" d="M47 17h5M47 17v-5" /></g></svg></div>
         <div class="mth-step-label">戦略設計<small>To be 設定</small></div>
         <div class="mth-step-body">KPI・対策KW・優先施策を顧客の強みと擦り合わせて決定。3〜6ヶ月のロードマップを策定する</div>
       </div>
       <div class="mth-arrow">›</div>
       <div class="mth-step">
         <div class="mth-step-num">STEP 03</div>
-        <div class="mth-step-icon">⚙️</div>
+        <div class="mth-step-icon"><svg class="ic ic-gear" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="g"><circle class="s" cx="32" cy="32" r="14"/><path class="s" d="M32 11v6" transform="rotate(0 32 32)"/><path class="s" d="M32 11v6" transform="rotate(45 32 32)"/><path class="s" d="M32 11v6" transform="rotate(90 32 32)"/><path class="s" d="M32 11v6" transform="rotate(135 32 32)"/><path class="s" d="M32 11v6" transform="rotate(180 32 32)"/><path class="s" d="M32 11v6" transform="rotate(225 32 32)"/><path class="s" d="M32 11v6" transform="rotate(270 32 32)"/><path class="s" d="M32 11v6" transform="rotate(315 32 32)"/></g><g class="g2"><circle class="s" cx="32" cy="32" r="6"/><path class="s" d="M32 26v-3M32 38v3M26 32h-3M38 32h3" /></g></svg></div>
         <div class="mth-step-label">実装・制作<small>施策実行</small></div>
         <div class="mth-step-body">ディレクトリ設計・内部リンク・メタ要素・コンテンツ制作まで一気通貫で実行する</div>
       </div>
       <div class="mth-arrow">›</div>
       <div class="mth-step">
         <div class="mth-step-num">STEP 04</div>
-        <div class="mth-step-icon">📊</div>
+        <div class="mth-step-icon"><svg class="ic ic-chart" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M15 47h34M15 47V17" /><g class="m-bar b1"><path class="s" d="M22 47V38" /></g><g class="m-bar b2"><path class="s" d="M30 47V31" /></g><g class="m-bar b3"><path class="s" d="M38 47V35" /></g><path class="s" d="M20 33 L28 25 L36 29 L48 15" /><circle class="f m-pulse" cx="48" cy="15" r="3"/></svg></div>
         <div class="mth-step-label">効果測定<small>検証・分析</small></div>
         <div class="mth-step-body">順位変動・流入・CV・カテゴリ平均順位を追跡。クリティカルな改善施策を特定する</div>
       </div>
       <div class="mth-arrow">›</div>
       <div class="mth-step">
         <div class="mth-step-num">STEP 05</div>
-        <div class="mth-step-icon">🚀</div>
+        <div class="mth-step-icon"><svg class="ic ic-rocket" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="m-bob"><path class="s" d="M32 12 C41 19 43 30 40 41 H24 C21 30 23 19 32 12Z" /><circle class="s" cx="32" cy="27" r="3.5"/><path class="s" d="M24 37 L16 46 L25 43M40 37 L48 46 L39 43" /><g class="m-flame"><path class="f" d="M28.5 45 L32 55 L35.5 45Z"/></g></g></svg></div>
         <div class="mth-step-label">改善・自走化<small>内製化支援</small></div>
         <div class="mth-step-body">PDCAを高速で回しながら、最終的には顧客が自走できる体制を構築する</div>
       </div>
@@ -722,35 +804,35 @@
     <div class="feat-g">
       <div class="feat-card fade-up">
         <div class="feat-no">REASON 01</div>
-        <div class="feat-icon">🎯</div>
+        <div class="feat-icon"><svg class="ic ic-route" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M18 46 C22 30 30 40 32 26 S44 40 47 20" /><circle class="f" cx="18" cy="46" r="3"/><circle class="f" cx="32" cy="26" r="3"/><circle class="f" cx="47" cy="20" r="3"/><g class="m-flag"><path class="s" d="M47 20 L47 12 L54 15 L47 17" /></g><circle class="f mv" r="2.6"><animateMotion dur="3.6s" repeatCount="indefinite" path="M18 46 C22 30 30 40 32 26 S44 40 47 20"/></circle></svg></div>
         <h3 class="feat-title">事業成果から逆算する<br>「戦略設計力」</h3>
         <p class="feat-body">アクセス数・順位ではなく、売上・リード・CVに直結するSEO戦略を設計。競合分析・キーワードマップ・コンテンツ計画まで、KGIから逆算した最短ルートを提示します。</p>
         <div class="feat-tags"><span class="feat-tag">競合分析</span><span class="feat-tag">KPI設計</span><span class="feat-tag">ロードマップ</span></div>
       </div>
       <div class="feat-card fade-up">
         <div class="feat-no">REASON 02</div>
-        <div class="feat-icon">✍️</div>
+        <div class="feat-icon"><svg class="ic ic-pen" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="m-write"><path class="s" d="M40 14 L50 24 L27 47 L16 50 L19 39Z" /><path class="s" d="M35 19 L45 29" /></g><path class="s m-ink" d="M16 54h18"/><path class="f tw" d="M18.00 16.00 L19.28 18.72 L22.00 20.00 L19.28 21.28 L18.00 24.00 L16.72 21.28 L14.00 20.00 L16.72 18.72Z"/></svg></div>
         <h3 class="feat-title">SEO×クリエイティブの<br>「実行力」</h3>
         <p class="feat-body">提案だけで終わらない。コンテンツ制作・構成設計・内部対策まで、実際に手を動かして成果に繋げます。メディア運営で蓄積した「読まれる・検索される」コンテンツ制作のノウハウが強みです。</p>
         <div class="feat-tags"><span class="feat-tag">コンテンツ制作</span><span class="feat-tag">記事ライティング</span></div>
       </div>
       <div class="feat-card fade-up">
         <div class="feat-no">REASON 03</div>
-        <div class="feat-icon">🤖</div>
+        <div class="feat-icon"><svg class="ic ic-chip" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M22 22h20v20H22z" stroke-linejoin="round"/><g class="m-spin-s"><path class="f" d="M32.00 26.00 L33.92 30.08 L38.00 32.00 L33.92 33.92 L32.00 38.00 L30.08 33.92 L26.00 32.00 L30.08 30.08Z"/></g><g class="m-pins"><path class="s" d="M27 22v-6M32 22v-6M37 22v-6M27 42v6M32 42v6M37 42v6M22 27h-6M22 32h-6M22 37h-6M42 27h6M42 32h6M42 37h6" /></g></svg></div>
         <h3 class="feat-title">AI時代に対応した<br>「最新知見」</h3>
         <p class="feat-body">ChatGPT・Gemini・Perplexityなど、AI検索が台頭する現代。AEO（回答エンジン最適化）・LLMO（大規模言語モデル最適化）にも対応し、次の検索体験に向けた戦略を今から構築します。</p>
         <div class="feat-tags"><span class="feat-tag">AEO</span><span class="feat-tag">LLMO</span><span class="feat-tag">AI検索最適化</span></div>
       </div>
       <div class="feat-card fade-up">
         <div class="feat-no">REASON 04</div>
-        <div class="feat-icon">🔄</div>
+        <div class="feat-icon"><svg class="ic ic-loop" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="m-loop"><path class="s" d="M17 31 A15 15 0 0 1 44 22" /><path class="s" d="M45 14 v9 h-9" /><path class="s" d="M47 33 A15 15 0 0 1 20 42" /><path class="s" d="M19 50 v-9 h9" /></g><circle class="f m-pulse" cx="32" cy="32" r="3"/></svg></div>
         <h3 class="feat-title">施策から実装まで<br>「伴走型サポート」</h3>
         <p class="feat-body">SEO施策は提案してから終わりではありません。実装進捗の管理・スケジューリング・PDCAサイクルまで、忙しいマーケ担当者が本業に集中できるよう一貫してサポートします。</p>
         <div class="feat-tags"><span class="feat-tag">進捗管理</span><span class="feat-tag">実装支援</span></div>
       </div>
       <div class="feat-card fade-up">
         <div class="feat-no">REASON 05</div>
-        <div class="feat-icon">📈</div>
+        <div class="feat-icon"><svg class="ic ic-steps" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M14 49 H26 V39 H38 V29 H50 V19" /><g class="m-up"><path class="s" d="M41 12 h10 v10" /><path class="s" d="M51 12 L38 25" /></g><circle class="f mv" r="2.6"><animateMotion dur="3.2s" repeatCount="indefinite" path="M16 46 H24 V36 H36 V26 H48 V16"/></circle></svg></div>
         <h3 class="feat-title">外注に頼らない<br>「内製化支援」</h3>
         <p class="feat-body">最終的には自走できるSEO体制の構築を支援します。コンサルティングを通じてノウハウをインプットし、段階的に内製化できるよう丁寧にサポートします。</p>
         <div class="feat-tags"><span class="feat-tag">内製化支援</span><span class="feat-tag">SEO研修</span></div>
@@ -1033,21 +1115,21 @@
         <p class="ai-lead">ChatGPT・Perplexity・Geminiなど、AI検索が急速に普及しています。「Googleの検索結果上位に表示させる」だけでは不十分な時代に。ThirdPlaceはAI検索に引用されるサイト設計（AEO・LLMO）を含めた次世代SEO戦略を提供します。</p>
         <div class="ai-pts">
           <div class="ai-pt">
-            <div class="ai-pt-icon">🔍</div>
+            <div class="ai-pt-icon"><svg class="ic ic-ai1" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="m-scan"><circle class="s" cx="28" cy="29" r="11"/><path class="s" d="M36 37 L46 47" /></g><path class="f tw" d="M44.00 12.50 L45.76 16.24 L49.50 18.00 L45.76 19.76 L44.00 23.50 L42.24 19.76 L38.50 18.00 L42.24 16.24Z"/><path class="f tw tw2" d="M21.00 16.00 L21.96 18.04 L24.00 19.00 L21.96 19.96 L21.00 22.00 L20.04 19.96 L18.00 19.00 L20.04 18.04Z"/></svg></div>
             <div>
               <div class="ai-pt-title">AEO（回答エンジン最適化）</div>
               <div class="ai-pt-body">ChatGPT・Perplexityなど生成AI検索で引用されるコンテンツ設計。構造化データ・E-E-A-T強化でAIに「信頼できる情報源」として認識させます。</div>
             </div>
           </div>
           <div class="ai-pt">
-            <div class="ai-pt-icon">🧠</div>
+            <div class="ai-pt-icon"><svg class="ic ic-ai2" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="fl" d="M32 32 L20 21M32 32 L44 21M32 32 L20 44M32 32 L44 44M20 21 L44 21"/><circle class="f m-pulse" cx="32" cy="32" r="4"/><circle class="f n1" cx="20" cy="21" r="3"/><circle class="f n2" cx="44" cy="21" r="3"/><circle class="f n3" cx="20" cy="44" r="3"/><circle class="f n4" cx="44" cy="44" r="3"/></svg></div>
             <div>
               <div class="ai-pt-title">LLMO（LLM向け最適化）</div>
               <div class="ai-pt-body">大規模言語モデルに正確に認識・引用されるための情報設計。ブランド認知をAI回答の中でも獲得します。</div>
             </div>
           </div>
           <div class="ai-pt">
-            <div class="ai-pt-icon">⚡</div>
+            <div class="ai-pt-icon"><svg class="ic ic-ai3" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M20 14h24v36H20z" stroke-linejoin="round"/><path class="s" d="M26 22h12M26 28h12" /><path class="f m-bolt" d="M35 34 L28 44 h5 L30 53 L41 40 h-5Z"/></svg></div>
             <div>
               <div class="ai-pt-title">AI×コンテンツ制作</div>
               <div class="ai-pt-body">AIを活用した高速・高品質なコンテンツ制作フローを構築。量と質を両立しながら競合を上回るコンテンツ戦略を実行します。</div>
@@ -1217,7 +1299,7 @@
     </div>
     <div class="auth-g">
       <div class="auth-card fade-up">
-        <div class="auth-icon">📰</div>
+        <div class="auth-icon"><svg class="ic ic-auth1" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><g class="m-page"><path class="s" d="M16 16h32v32H16z" stroke-linejoin="round"/><path class="s" d="M22 24h20M22 30h11M22 38h20" /><path class="f" d="M37 28h5v5h-5z"/></g></svg></div>
         <div>
           <div class="auth-type">業界誌掲載</div>
           <div class="auth-title">Web Designing — オウンドメディア成功事例として特集</div>
@@ -1225,7 +1307,7 @@
         </div>
       </div>
       <div class="auth-card fade-up">
-        <div class="auth-icon">🎙️</div>
+        <div class="auth-icon"><svg class="ic ic-auth2" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M27 14h10v20a5 5 0 0 1-10 0z" /><path class="s" d="M21 30a11 11 0 0 0 22 0" /><path class="s" d="M32 41v7M26 48h12" /><path class="wv w1" d="M48 22 a10 10 0 0 1 0 14"/><path class="wv w2" d="M53 18 a16 16 0 0 1 0 22"/><path class="wv w1" d="M16 22 a10 10 0 0 0 0 14"/><path class="wv w2" d="M11 18 a16 16 0 0 0 0 22"/></svg></div>
         <div>
           <div class="auth-type">メディアインタビュー</div>
           <div class="auth-title">フリーランス名鑑 — インタビュー掲載</div>
@@ -1233,7 +1315,7 @@
         </div>
       </div>
       <div class="auth-card fade-up">
-        <div class="auth-icon">🐦</div>
+        <div class="auth-icon"><svg class="ic ic-auth3" viewBox="0 0 64 64" aria-hidden="true"><circle class="ic-bg" cx="32" cy="32" r="29"/><circle class="ic-ring" cx="32" cy="32" r="29"/><path class="s" d="M16 20h32v20H34l-8 8v-8H16z" stroke-linejoin="round"/><circle class="f d1" cx="25" cy="30" r="2"/><circle class="f d2" cx="32" cy="30" r="2"/><circle class="f d3" cx="39" cy="30" r="2"/></svg></div>
         <div>
           <div class="auth-type">SNS / 情報発信</div>
           <div class="auth-title">X（旧Twitter）@digital_seo100</div>
@@ -1449,6 +1531,10 @@
     $$('.h2, .cta-h2, .ai-title').forEach(el => io.observe(el));
     // 同じ親の中のカードを順にずらす
     $$('.rec-g, .cases-g, .plans-g, .feat-g, .ai-pts, .proc-g, .auth-g').forEach(g => $$('.fade-up', g).forEach((c,i)=>{ c.style.transitionDelay = (i*0.08)+'s'; }));
+
+    // イラストの線描画（動きを減らす設定ではSMILも止める）
+    const icio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('on'); icio.unobserve(e.target); } }), {threshold:.3});
+    $$('.ic').forEach(el => { icio.observe(el); if (reduce && el.pauseAnimations) el.pauseAnimations(); });
 
     // 数字のカウントアップ
     function count(el){
