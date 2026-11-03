@@ -355,6 +355,156 @@
       .footer-links-b{justify-content:center}
     }
 
+    /* ── お悩み（4枚のカード）・解決しますの帯・数字の帯（2026-11-03） ── */
+    #pain .pain-hd .h2{font-size:clamp(28px,4.2vw,50px);font-weight:900;letter-spacing:.01em;line-height:1.3}
+    .pain-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .pain-card{position:relative;background:#e9e7e1;border-radius:10px;overflow:hidden;padding-bottom:118px}
+    .pain-card-hd{position:relative;background:#141210;color:#fff;font-size:16.5px;font-weight:900;letter-spacing:.02em;text-align:center;padding:22px 14px 24px;line-height:1.45}
+    .pain-card-hd span{display:block;font-size:11px;letter-spacing:.24em;color:var(--gold);margin-bottom:6px}
+    .pain-card-hd::after{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);border:15px solid transparent;border-top-color:#141210;border-bottom:0}
+    .pain-card ul{list-style:none;padding:34px 22px 0;display:flex;flex-direction:column;gap:12px}
+    .pain-card li{position:relative;padding-left:16px;font-size:14.5px;line-height:1.75;color:#1d1b18;font-weight:500}
+    .pain-card li::before{content:'';position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:#1d1b18}
+    .pain-card-ic{position:absolute;right:14px;bottom:12px}
+    .pain-card-ic .ic{width:100px;height:100px}
+    .pain-card .ic{filter:none}.pain-card .ic .s,.pain-card .ic .fl{stroke:#8f6a12}.pain-card .ic .f{fill:#8f6a12}.pain-card .ic-bg{fill:rgba(201,162,39,.16);stroke:rgba(143,106,18,.35)}.pain-card .ic-ring{stroke:#8f6a12}
+    @media(max-width:1024px){.pain-cards{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.pain-cards{grid-template-columns:1fr}.pain-card{padding-bottom:104px}}
+
+    #resolve{position:relative;overflow:hidden;background:#0b0a09;color:#fff;padding:0}
+    .rs-in{position:relative;z-index:2;padding:110px 24px 100px;text-align:center}
+    .rs-copy{font-weight:900;line-height:1.18;letter-spacing:.01em;margin:0}
+    .rs-1{display:block;font-size:clamp(40px,6.4vw,96px)}
+    .rs-2{display:block;font-size:clamp(40px,7vw,108px);margin-top:.08em}
+    .rs-1 i{display:inline-block;font-style:normal;opacity:0;transform:translateY(55%) skewX(-14deg);transition:opacity .25s,transform .5s cubic-bezier(.16,1,.3,1)}
+    .rs-on .rs-1 i{opacity:1;transform:none}
+    #resolve mark{position:relative;z-index:0;display:inline-block;background:none;color:transparent;padding:0 .14em;margin:.04em .02em;transition:color .05s}
+    #resolve mark::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .42s cubic-bezier(.7,0,.2,1)}
+    #resolve.rs-on .rs-2 mark{color:#0b0a09}
+    #resolve.rs-on .rs-2 mark::before{transform:scaleX(1)}
+    #resolve.rs-on .rs-2 mark:nth-child(1){transition-delay:.62s}#resolve.rs-on .rs-2 mark:nth-child(1)::before{transition-delay:.42s}
+    #resolve.rs-on .rs-2 mark:nth-child(2){transition-delay:.9s}#resolve.rs-on .rs-2 mark:nth-child(2)::before{transition-delay:.7s}
+    .rs-sub{margin-top:34px;font-size:clamp(14px,1.6vw,18px);font-weight:700;color:rgba(255,255,255,.85);opacity:0;transform:translateY(12px);transition:opacity .5s 1.15s,transform .6s 1.15s cubic-bezier(.16,1,.3,1)}
+    .rs-on .rs-sub{opacity:1;transform:none}
+    .rs-sub mark{color:#0b0a09!important;font-size:1em;padding:.1em .4em!important;margin-right:.4em!important}
+    .rs-sub mark::before{transform:none!important;background:#f1ece2!important}
+    .rs-lines{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .rs-lines i{position:absolute;left:0;height:1px;width:38%;background:linear-gradient(90deg,transparent,rgba(217,191,122,.7),transparent);transform:translateX(-110%);animation:rsline linear infinite}
+    @keyframes rsline{to{transform:translateX(320%)}}
+    .rs-tape{position:relative;z-index:2;overflow:hidden;white-space:nowrap;background:var(--gold);color:#0b0a09;font-size:13px;font-weight:900;letter-spacing:.24em;padding:11px 0}
+    .rs-tape div{display:inline-flex;animation:rstape 26s linear infinite}
+    .rs-tape--rev{background:transparent;color:rgba(217,191,122,.85);border-top:1px solid rgba(217,191,122,.35)}
+    .rs-tape--rev div{animation-direction:reverse}
+    @keyframes rstape{to{transform:translateX(-50%)}}
+    @media(max-width:600px){.rs-in{padding:80px 16px 72px}.rs-tape{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){.rs-1 i,#resolve mark,#resolve mark::before,.rs-sub{transition:none!important}.rs-lines,.rs-tape div{animation:none!important;display:none}}
+
+    #stats{background:#0d0b09;border-top:1px solid rgba(201,162,39,.28);border-bottom:1px solid rgba(201,162,39,.28);padding:76px 0}
+    .stats-g{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .stat-item{text-align:left;padding:4px 34px;border-right:none!important;border-left:1px solid rgba(241,236,226,.14)}
+    .stat-item:first-child{border-left:none;padding-left:0}
+    .stat-k{font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+    .stat-n{font-family:"Helvetica Neue",Arial,sans-serif;font-size:clamp(46px,5.4vw,84px);font-weight:200;color:#f1ece2;line-height:1;letter-spacing:-.04em;white-space:nowrap}
+    .stat-n em{font-style:normal;font-family:inherit;font-size:.3em;font-weight:500;color:var(--gold);letter-spacing:0;margin-left:.2em}
+    .stat-l{font-size:12.5px;color:rgba(241,236,226,.62);margin-top:16px;line-height:1.7;letter-spacing:.03em}
+    @media(max-width:900px){.stats-g{grid-template-columns:repeat(2,1fr);row-gap:44px}.stat-item:nth-child(odd){border-left:none;padding-left:0}.stat-item{padding:4px 22px}}
+    @media(max-width:600px){#stats{padding:56px 0}.stat-n{font-size:46px}}
+
+    /* 手順・選ばれる理由：文字を太く大きく */
+    .mth-step-num{font-size:12px;letter-spacing:.26em}
+    .mth-step-label{font-size:19px!important;font-weight:900;letter-spacing:.02em}
+    .mth-step-label small{font-size:12px;font-weight:700}
+    .mth-step-body{overflow-wrap:anywhere}
+    .feat-title{font-size:22px;letter-spacing:.01em;line-height:1.45}
+    @media(max-width:900px){.mth-step{min-width:0!important;width:100%}}
+
+    /* ── イラスト（金のグラデーション線。入ると線が描かれ、常にゆっくり動く） ── */
+    .mth-step-icon,.feat-icon,.ai-pt-icon,.auth-icon{background:none;border:none;font-size:0;line-height:0;display:flex;align-items:center;justify-content:center}
+    .mth-step-icon{margin:4px 0 16px}.mth-step-icon .ic{width:104px;height:104px}
+    .feat-icon{width:auto;height:auto;margin-bottom:22px;justify-content:flex-start}.feat-icon .ic{width:112px;height:112px}
+    .ai-pt-icon{width:76px;height:76px;flex-shrink:0}.ai-pt-icon .ic{width:76px;height:76px}
+    .auth-icon{width:76px;height:76px;flex-shrink:0}.auth-icon .ic{width:76px;height:76px}
+    .ic{overflow:visible;filter:drop-shadow(0 0 14px rgba(201,162,39,.3))}
+    .ic *{transform-box:view-box}
+    .ic-bg{fill:url(#goldGlow);stroke:rgba(201,162,39,.35);stroke-width:.8}
+    .ic-ring{fill:none;stroke:url(#goldLine);stroke-width:1.2;stroke-dasharray:8 174;stroke-linecap:round;transform-origin:32px 32px;animation:icspin 9s linear infinite}
+    .ic .s{fill:none;stroke:url(#goldLine);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:160;stroke-dashoffset:160;transition:stroke-dashoffset 1.1s cubic-bezier(.16,1,.3,1)}
+    .ic.on .s{stroke-dashoffset:0}
+    /* 画面に入った瞬間、勢いよく回りながら出る。カードに乗ると外周の線が速く回る */
+    .ic.on{animation:icpop .75s cubic-bezier(.16,1,.3,1) both}
+    @keyframes icpop{0%{transform:scale(.5) rotate(-30deg);opacity:0}60%{transform:scale(1.1) rotate(4deg);opacity:1}100%{transform:none;opacity:1}}
+    .mth-step:hover .ic-ring,.feat-card:hover .ic-ring,.pain-card:hover .ic-ring,.ai-pt:hover .ic-ring{animation-duration:1.6s}
+    .ic .f{fill:url(#goldLine);opacity:0;transition:opacity .8s .9s}
+    .ic.on .f{opacity:1}
+    .mth-step:hover .ic,.feat-card:hover .ic,.ai-pt:hover .ic,.auth-card:hover .ic{filter:drop-shadow(0 0 22px rgba(201,162,39,.6))}
+    /* 個別の動き */
+    .ic .g{transform-origin:32px 32px;animation:icspin 14s linear infinite}
+    .ic .g2{transform-origin:32px 32px;animation:icspin 7s linear infinite reverse}
+    .ic .m-scan{animation:icscan 4.5s ease-in-out infinite}
+    .ic .tw{transform-box:fill-box;transform-origin:center;animation:ictw 2.4s ease-in-out infinite}
+    .ic .tw2{animation-delay:1.2s}
+    .ic .m-arrow{animation:ichit 2.8s cubic-bezier(.16,1,.3,1) infinite}
+    .ic .rp{transform-origin:32px 32px;animation:icripple 2.8s ease-out infinite;stroke-dashoffset:0!important}
+    .ic .m-core{transform-box:fill-box;transform-origin:center;animation:icpulse 2.8s ease-in-out infinite}
+    .ic .m-bar{transform-origin:0 47px;animation:icbar 2.6s cubic-bezier(.16,1,.3,1) infinite}
+    .ic .b2{animation-delay:.25s}.ic .b3{animation-delay:.5s}
+    .ic .m-pulse{transform-box:fill-box;transform-origin:center;animation:icpulse 1.8s ease-in-out infinite}
+    .ic .m-bob{animation:icbob 2.4s ease-in-out infinite}
+    .ic .m-flame{transform-origin:32px 45px;animation:icflame .35s ease-in-out infinite alternate}
+    .ic .m-flag{transform-origin:47px 20px;animation:icflag 1.6s ease-in-out infinite alternate}
+    .ic .m-write{transform-origin:16px 50px;animation:icwrite 1.4s ease-in-out infinite alternate}
+    .ic .m-ink{animation:icink 2.8s ease-in-out infinite}
+    .ic .m-spin-s{transform-origin:32px 32px;animation:icspin 6s linear infinite}
+    .ic .m-pins{animation:icblink 1.6s ease-in-out infinite}
+    .ic .m-loop{transform-origin:32px 32px;animation:icspin 5s linear infinite}
+    .ic .m-up{animation:icup 1.6s ease-in-out infinite}
+    .ic .fl{fill:none;stroke:url(#goldLine);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:2 4;animation:icflow 1.2s linear infinite}
+    .ic .n1,.ic .n2,.ic .n3,.ic .n4{transform-box:fill-box;transform-origin:center;animation:icpulse 2s ease-in-out infinite}
+    .ic .n2{animation-delay:.5s}.ic .n3{animation-delay:1s}.ic .n4{animation-delay:1.5s}
+    .ic .m-bolt{transform-box:fill-box;transform-origin:center;animation:icbolt 2.2s ease-in-out infinite}
+    .ic .m-page{transform-origin:32px 32px;animation:icpage 3.2s ease-in-out infinite}
+    .ic .wv{fill:none;stroke:url(#goldLine);stroke-width:1.8;stroke-linecap:round;opacity:0;animation:icwave 1.8s ease-out infinite}
+    .ic .w2{animation-delay:.45s}
+    .ic .d1,.ic .d2,.ic .d3{transform-box:fill-box;transform-origin:center;animation:icdot 1.2s ease-in-out infinite}
+    .ic .d2{animation-delay:.15s}.ic .d3{animation-delay:.3s}
+    @keyframes icspin{to{transform:rotate(360deg)}}
+    @keyframes icscan{0%,100%{transform:translate(0,0)}25%{transform:translate(4px,-2px)}50%{transform:translate(1px,-5px)}75%{transform:translate(-4px,-2px)}}
+    @keyframes ictw{0%,100%{transform:scale(.6) rotate(0);opacity:.5}50%{transform:scale(1.25) rotate(45deg);opacity:1}}
+    @keyframes ichit{0%{transform:translate(12px,-12px);opacity:0}15%{opacity:1}30%{transform:translate(0,0)}34%{transform:translate(1.5px,-1.5px)}38%,85%{transform:translate(0,0);opacity:1}100%{transform:translate(0,0);opacity:0}}
+    @keyframes icripple{0%,30%{transform:scale(1);opacity:0}34%{opacity:.8}100%{transform:scale(1.55);opacity:0}}
+    @keyframes icpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+    @keyframes icbar{0%{transform:scaleY(.2)}45%,80%{transform:scaleY(1)}100%{transform:scaleY(.2)}}
+    @keyframes icbob{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+    @keyframes icflame{from{transform:scaleY(.7);opacity:.7}to{transform:scaleY(1.2);opacity:1}}
+    @keyframes icflag{from{transform:skewY(-6deg)}to{transform:skewY(6deg)}}
+    @keyframes icwrite{from{transform:rotate(-4deg)}to{transform:rotate(5deg) translateX(3px)}}
+    @keyframes icink{0%{stroke-dasharray:0 40}60%,100%{stroke-dasharray:18 40}}
+    @keyframes icblink{0%,100%{opacity:.45}50%{opacity:1}}
+    @keyframes icup{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-3px)}}
+    @keyframes icflow{to{stroke-dashoffset:-12}}
+    @keyframes icbolt{0%,60%,100%{opacity:.55;transform:scale(1)}68%{opacity:1;transform:scale(1.18)}76%{opacity:.7}84%{opacity:1}}
+    @keyframes icpage{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+    @keyframes icwave{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+    @keyframes icdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+    @media(max-width:600px){.mth-step-icon .ic{width:88px;height:88px}.feat-icon .ic{width:96px;height:96px}}
+    @media(prefers-reduced-motion:reduce){.ic,.ic *{animation:none!important}.ic .s{stroke-dashoffset:0;transition:none}.ic .f{opacity:1}}
+
+    /* ── 読みやすさ：手順の説明文 ── */
+    .mth-step-body{font-size:13px;color:rgba(255,255,255,.82);line-height:1.85}
+    .mth-step-label{font-size:15px}
+
+
+    /* ── ヒーロー：小さいh1＋大きいキャッチ＋サブコピー ── */
+    .hero-kicker{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--gold);margin-bottom:22px;line-height:1.6}
+    .hero-kicker::before{content:'';display:block;width:24px;height:1px;background:var(--gold);flex-shrink:0}
+    .hero-h1{font-size:clamp(34px,5.2vw,64px);line-height:1.2;letter-spacing:-.02em;margin-bottom:18px}
+    .hero-copy{font-size:clamp(16px,1.9vw,22px);font-weight:700;color:#fff;letter-spacing:.02em;margin-bottom:22px}
+    @media(max-width:600px){.hero-h1{font-size:32px}.hero-kicker{font-size:12px}}
+
+    /* B案は白黒なので、解決しますの帯は白い帯に黒い文字 */
+    #resolve mark::before{background:#fff}
+    .rs-tape{background:#fff}
+
   </style>
 </head>
 <body>
