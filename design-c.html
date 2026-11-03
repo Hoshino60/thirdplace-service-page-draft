@@ -578,10 +578,16 @@
     .is-3d-inline .shelf3d-inline{display:block}
     .is-3d-inline .shelf2d{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
     @media(max-width:1023px){#hero .hero-in{padding-bottom:24px}}
+
+    /* 2Dの本棚も洋書の向き・書体に（題名を横書きのまま90度回す） */
+    .shelf2d .st{text-orientation:sideways;font-size:15px;letter-spacing:.04em}
+    .shelf2d .spine[data-sty="sans"] .st,.shelf2d .spine[data-sty="bars"] .st{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;font-weight:900}
+    .shelf2d .spine[data-sty="outline"] .st{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;font-weight:900}
+    .shelf2d .spine[data-sty="outline"]{box-shadow:inset 3px 0 0 var(--c),inset 4px 0 0 var(--t),inset -3px 0 0 var(--c),inset -4px 0 0 var(--t)}
   </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="goldLine" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56"><stop offset="0" stop-color="#f6df8d"/><stop offset="1" stop-color="#b8891a"/></linearGradient><radialGradient id="goldGlow"><stop offset="0" stop-color="rgba(201,162,39,.26)"/><stop offset="1" stop-color="rgba(201,162,39,.03)"/></radialGradient></defs></svg>
@@ -659,22 +665,22 @@
     <!-- C案：事業の本棚（目次）。幅1024px以上で3Dのときは読み上げ用に残す -->
     <nav class="shelf2d" aria-label="このページの目次">
         <ul class="shelf2d-row">
-          <li><a class="spine" href="#services" data-no="01" data-ja="戦略設計" data-en="Strategy" data-desc="KWの「今」と「目指す姿」を並べ、どのページで何を取るかを決めます。" data-hf="0.7" data-th="0.105" data-row="0" style="--c:#ece4d4;--t:#2a211a;--h:189px;--w:42px"><span class="sn">01</span><span class="st">戦略設計</span><span class="se">Strategy</span></a></li>
-          <li><a class="spine" href="#services" data-no="02" data-ja="コンテンツ" data-en="Content" data-desc="事業の熱量を、検索する人の言葉に直して記事にします。" data-hf="0.9" data-th="0.095" data-row="0" style="--c:#2d3442;--t:#f1ece2;--h:200px;--w:38px"><span class="sn">02</span><span class="st">コンテンツ</span><span class="se">Content</span></a></li>
-          <li><a class="spine" href="#services" data-no="03" data-ja="テクニカル" data-en="Technical" data-desc="クロール・インデックス・内部リンクの詰まりを見つけて直します。" data-hf="0.55" data-th="0.1" data-row="0" style="--c:#8f9a7d;--t:#2a211a;--h:181px;--w:40px"><span class="sn">03</span><span class="st">テクニカル</span><span class="se">Technical</span></a></li>
-          <li><a class="spine" href="#services" data-no="04" data-ja="効果測定" data-en="Report" data-desc="順位・流入・問い合わせを月ごとに追い、次の打ち手を決めます。" data-hf="0.75" data-th="0.085" data-row="0" style="--c:#d6c4a3;--t:#2a211a;--h:192px;--w:34px"><span class="sn">04</span><span class="st">効果測定</span><span class="se">Report</span></a></li>
-          <li><a class="spine" href="#komon" data-no="05" data-ja="SEO顧問" data-en="Advisory" data-desc="月額で、迷ったときにすぐ相談できる伴走の形です。" data-hf="1.0" data-th="0.12" data-row="0" style="--c:#c9a227;--t:#2a211a;--h:206px;--w:48px"><span class="sn">05</span><span class="st">SEO顧問</span><span class="se">Advisory</span></a></li>
-          <li><a class="spine" href="#ai" data-no="06" data-ja="AI検索" data-en="LLMO" data-desc="ChatGPTやGeminiなど、生成AIの答えに選ばれる準備をします。" data-hf="0.62" data-th="0.095" data-row="0" style="--c:#c49a8c;--t:#2a211a;--h:185px;--w:38px"><span class="sn">06</span><span class="st">AI検索</span><span class="se">LLMO</span></a></li>
-          <li><a class="spine" href="#compare" data-no="07" data-ja="他社との違い" data-en="Difference" data-desc="大手のSEO会社や、生成AIで自力で進める場合との違い。" data-hf="0.82" data-th="0.1" data-row="0" style="--c:#2b2825;--t:#f1ece2;--h:196px;--w:40px"><span class="sn">07</span><span class="st">他社との違い</span><span class="se">Difference</span></a></li>
+          <li><a class="spine" href="#services" data-no="01" data-ja="戦略設計" data-en="Strategy" data-desc="KWの「今」と「目指す姿」を並べ、どのページで何を取るかを決めます。" data-hf="0.7" data-th="0.105" data-row="0" data-sty="serif" style="--c:#1f1d1b;--t:#f4efe6;--h:189px;--w:42px"><span class="sn">01</span><span class="st">戦略設計</span><span class="se">Strategy</span></a></li>
+          <li><a class="spine" href="#services" data-no="02" data-ja="コンテンツ" data-en="Content" data-desc="事業の熱量を、検索する人の言葉に直して記事にします。" data-hf="0.9" data-th="0.095" data-row="0" data-sty="sans" style="--c:#e07b2a;--t:#363c94;--h:200px;--w:38px"><span class="sn">02</span><span class="st">コンテンツ</span><span class="se">Content</span></a></li>
+          <li><a class="spine" href="#services" data-no="03" data-ja="テクニカル" data-en="Technical" data-desc="クロール・インデックス・内部リンクの詰まりを見つけて直します。" data-hf="0.55" data-th="0.1" data-row="0" data-sty="outline" style="--c:#262422;--t:#f4efe6;--h:181px;--w:40px"><span class="sn">03</span><span class="st">テクニカル</span><span class="se">Technical</span></a></li>
+          <li><a class="spine" href="#services" data-no="04" data-ja="効果測定" data-en="Report" data-desc="順位・流入・問い合わせを月ごとに追い、次の打ち手を決めます。" data-hf="0.75" data-th="0.085" data-row="0" data-sty="sans" style="--c:#e9a63a;--t:#1f1d1b;--h:192px;--w:34px"><span class="sn">04</span><span class="st">効果測定</span><span class="se">Report</span></a></li>
+          <li><a class="spine" href="#komon" data-no="05" data-ja="SEO顧問" data-en="Advisory" data-desc="月額で、迷ったときにすぐ相談できる伴走の形です。" data-hf="1.0" data-th="0.12" data-row="0" data-sty="serif" style="--c:#e3a27f;--t:#1f1d1b;--h:206px;--w:48px"><span class="sn">05</span><span class="st">SEO顧問</span><span class="se">Advisory</span></a></li>
+          <li><a class="spine" href="#ai" data-no="06" data-ja="AI検索" data-en="LLMO" data-desc="ChatGPTやGeminiなど、生成AIの答えに選ばれる準備をします。" data-hf="0.62" data-th="0.095" data-row="0" data-sty="bars" style="--c:#efe6d6;--t:#1f1d1b;--h:185px;--w:38px"><span class="sn">06</span><span class="st">AI検索</span><span class="se">LLMO</span></a></li>
+          <li><a class="spine" href="#compare" data-no="07" data-ja="他社との違い" data-en="Difference" data-desc="大手のSEO会社や、生成AIで自力で進める場合との違い。" data-hf="0.82" data-th="0.1" data-row="0" data-sty="bars" style="--c:#1f1d1b;--t:#f4efe6;--h:196px;--w:40px"><span class="sn">07</span><span class="st">他社との違い</span><span class="se">Difference</span></a></li>
         </ul>
         <ul class="shelf2d-row">
-          <li><a class="spine" href="#cases" data-no="08" data-ja="事例 アパレル" data-en="Case 01" data-desc="月間700万PV。VOL41,000のKWで1位。" data-hf="0.8" data-th="0.1" data-row="1" style="--c:#b0664a;--t:#f1ece2;--h:195px;--w:40px"><span class="sn">08</span><span class="st">事例 アパレル</span><span class="se">Case 01</span></a></li>
-          <li><a class="spine" href="#cases" data-no="09" data-ja="事例 ネイル" data-en="Case 02" data-desc="楽天・Amazonを超え、VOL74,000のKWで1位。" data-hf="0.66" data-th="0.095" data-row="1" style="--c:#e8dfcf;--t:#2a211a;--h:187px;--w:38px"><span class="sn">09</span><span class="st">事例 ネイル</span><span class="se">Case 02</span></a></li>
-          <li><a class="spine" href="#cases" data-no="10" data-ja="事例 メディア" data-en="Case 03" data-desc="月150万PVから450万PVへ。VOL90,500のKWで1位。" data-hf="0.92" data-th="0.1" data-row="1" style="--c:#3a4a44;--t:#f1ece2;--h:202px;--w:40px"><span class="sn">10</span><span class="st">事例 メディア</span><span class="se">Case 03</span></a></li>
-          <li><a class="spine" href="#plans" data-no="11" data-ja="料金プラン" data-en="Plans" data-desc="料金プランと契約の条件。" data-hf="0.58" data-th="0.11" data-row="1" style="--c:#d6c4a3;--t:#2a211a;--h:182px;--w:44px"><span class="sn">11</span><span class="st">料金プラン</span><span class="se">Plans</span></a></li>
-          <li><a class="spine" href="#process" data-no="12" data-ja="支援の流れ" data-en="Process" data-desc="ご相談から施策の実行までの流れ。" data-hf="0.74" data-th="0.09" data-row="1" style="--c:#6f6b4a;--t:#f1ece2;--h:191px;--w:36px"><span class="sn">12</span><span class="st">支援の流れ</span><span class="se">Process</span></a></li>
-          <li><a class="spine" href="#team" data-no="13" data-ja="プロフィール" data-en="Profile" data-desc="業界歴15年のSEOコンサルタントについて。" data-hf="0.86" data-th="0.105" data-row="1" style="--c:#ece4d4;--t:#2a211a;--h:198px;--w:42px"><span class="sn">13</span><span class="st">プロフィール</span><span class="se">Profile</span></a></li>
-          <li><a class="spine" href="#faq" data-no="14" data-ja="よくある質問" data-en="FAQ" data-desc="契約・進め方・費用についてのご質問。" data-hf="0.64" data-th="0.1" data-row="1" style="--c:#2d3442;--t:#f1ece2;--h:186px;--w:40px"><span class="sn">14</span><span class="st">よくある質問</span><span class="se">FAQ</span></a></li>
+          <li><a class="spine" href="#cases" data-no="08" data-ja="事例 アパレル" data-en="Case 01" data-desc="月間700万PV。VOL41,000のKWで1位。" data-hf="0.8" data-th="0.1" data-row="1" data-sty="serif" style="--c:#e07b2a;--t:#1f1d1b;--h:195px;--w:40px"><span class="sn">08</span><span class="st">事例 アパレル</span><span class="se">Case 01</span></a></li>
+          <li><a class="spine" href="#cases" data-no="09" data-ja="事例 ネイル" data-en="Case 02" data-desc="楽天・Amazonを超え、VOL74,000のKWで1位。" data-hf="0.66" data-th="0.095" data-row="1" data-sty="outline" style="--c:#262422;--t:#f4efe6;--h:187px;--w:38px"><span class="sn">09</span><span class="st">事例 ネイル</span><span class="se">Case 02</span></a></li>
+          <li><a class="spine" href="#cases" data-no="10" data-ja="事例 メディア" data-en="Case 03" data-desc="月150万PVから450万PVへ。VOL90,500のKWで1位。" data-hf="0.92" data-th="0.1" data-row="1" data-sty="serif" style="--c:#efe6d6;--t:#1f1d1b;--h:202px;--w:40px"><span class="sn">10</span><span class="st">事例 メディア</span><span class="se">Case 03</span></a></li>
+          <li><a class="spine" href="#plans" data-no="11" data-ja="料金プラン" data-en="Plans" data-desc="料金プランと契約の条件。" data-hf="0.58" data-th="0.11" data-row="1" data-sty="sans" style="--c:#e9a63a;--t:#363c94;--h:182px;--w:44px"><span class="sn">11</span><span class="st">料金プラン</span><span class="se">Plans</span></a></li>
+          <li><a class="spine" href="#process" data-no="12" data-ja="支援の流れ" data-en="Process" data-desc="ご相談から施策の実行までの流れ。" data-hf="0.74" data-th="0.09" data-row="1" data-sty="serif" style="--c:#1f1d1b;--t:#f4efe6;--h:191px;--w:36px"><span class="sn">12</span><span class="st">支援の流れ</span><span class="se">Process</span></a></li>
+          <li><a class="spine" href="#team" data-no="13" data-ja="プロフィール" data-en="Profile" data-desc="業界歴15年のSEOコンサルタントについて。" data-hf="0.86" data-th="0.105" data-row="1" data-sty="sans" style="--c:#e3a27f;--t:#1f1d1b;--h:198px;--w:42px"><span class="sn">13</span><span class="st">プロフィール</span><span class="se">Profile</span></a></li>
+          <li><a class="spine" href="#faq" data-no="14" data-ja="よくある質問" data-en="FAQ" data-desc="契約・進め方・費用についてのご質問。" data-hf="0.64" data-th="0.1" data-row="1" data-sty="outline" style="--c:#262422;--t:#e9a63a;--h:186px;--w:40px"><span class="sn">14</span><span class="st">よくある質問</span><span class="se">FAQ</span></a></li>
         </ul>
     </nav>
   </div>
@@ -1688,6 +1694,7 @@
     const wide = () => window.innerWidth >= 1024;
     const T = window.THREE;
     const SERIF = '"Noto Serif JP","Yu Mincho","YuMincho","Hiragino Mincho ProN",serif';
+    const SANS = '"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif';
     let started = false, alive = false;
 
     function webgl(){ try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch(e){ return false; } }
@@ -1697,7 +1704,7 @@
     const books = links.map(a => ({
       a, href: a.getAttribute('href'), no: a.dataset.no, ja: a.dataset.ja, en: a.dataset.en, desc: a.dataset.desc,
       c: a.style.getPropertyValue('--c').trim(), t: a.style.getPropertyValue('--t').trim(),
-      hf: parseFloat(a.dataset.hf), th: parseFloat(a.dataset.th), row: +a.dataset.row
+      hf: parseFloat(a.dataset.hf), th: parseFloat(a.dataset.th), row: +a.dataset.row, sty: a.dataset.sty
     }));
 
     function init(){
@@ -1732,36 +1739,45 @@
 
       function lum(hex){ const n = parseInt(hex.slice(1),16); return (.299*(n>>16) + .587*((n>>8)&255) + .114*(n&255))/255; }
       function spineTex(b, w, h){
-        const H = 1024, W = Math.max(110, Math.round(H*w/h));
+        // 洋書の背表紙：題名を横書きのまま90度回し、背表紙いっぱいに大きく入れる（上から下へ読む）
+        const H = 1024, W = Math.max(120, Math.round(H*w/h));
         return tex(W, H, g => {
           g.fillStyle = b.c; g.fillRect(0, 0, W, H);
-          for (let i = 0; i < 1400; i++){ g.fillStyle = `rgba(0,0,0,${Math.random()*.045})`; g.fillRect(Math.random()*W, Math.random()*H, 1, Math.random()*5+1); }
+          for (let i = 0; i < 1600; i++){ g.fillStyle = `rgba(0,0,0,${Math.random()*.04})`; g.fillRect(Math.random()*W, Math.random()*H, 1, Math.random()*5+1); }
           const sh = g.createLinearGradient(0, 0, W, 0);
-          sh.addColorStop(0, 'rgba(0,0,0,.22)'); sh.addColorStop(.2, 'rgba(255,255,255,.07)'); sh.addColorStop(.6, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(0,0,0,.26)');
+          sh.addColorStop(0, 'rgba(0,0,0,.2)'); sh.addColorStop(.18, 'rgba(255,255,255,.06)'); sh.addColorStop(.6, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(0,0,0,.24)');
           g.fillStyle = sh; g.fillRect(0, 0, W, H);
-          const dark = lum(b.c) < .45;
-          const ink = b.t || (dark ? '#efe6d2' : '#2b241d');
-          const foil = dark ? '#d8bd7c' : ink;
-          // 箔押しの二重線（上下）
-          g.fillStyle = foil; g.globalAlpha = dark ? .9 : .6;
-          [[58, 2.2], [66, 1], [H-118, 1], [H-110, 2.2]].forEach(([y, t]) => g.fillRect(W*.14, y, W*.72, t));
-          g.globalAlpha = 1; g.textAlign = 'center'; g.textBaseline = 'middle';
-          g.fillStyle = foil; g.font = `500 ${Math.round(W*.2)}px ${SERIF}`; g.fillText(b.no, W/2, 30);
-          // 縦書きの題名（明朝・字間をあける）
-          g.fillStyle = ink;
-          const chars = [...b.ja], fs = Math.min(W*.47, (H-370)/chars.length*.9);
-          g.font = `600 ${Math.round(fs)}px ${SERIF}`;
-          let y = 120 + fs/2;
-          chars.forEach(ch => {
-            if (ch === ' '){ y += fs*.6; return; }
-            if ('ー－—…'.includes(ch)){ g.save(); g.translate(W/2, y); g.rotate(Math.PI/2); g.fillText(ch, 0, 0); g.restore(); }
-            else g.fillText(ch, W/2, y);
-            y += fs*1.12;
-          });
-          // 英字（寝かせて、字間を広く）
-          g.save(); g.translate(W/2, H-56); g.rotate(-Math.PI/2); g.globalAlpha = .7; g.fillStyle = foil;
-          g.font = `500 ${Math.round(W*.13)}px "Helvetica Neue",Arial,sans-serif`;
-          const s = b.en.toUpperCase().split('').join(String.fromCharCode(8202)); g.fillText(s, 0, 0); g.restore();
+          const ink = b.t, sty = b.sty || 'serif', bars = sty === 'bars';
+          g.save(); g.translate(W/2, H/2); g.rotate(Math.PI/2);
+          // 回した座標：x は背の長さ方向（-H/2〜H/2）、y は背の幅方向（-W/2〜W/2）
+          const top = -H/2 + 70, end = H/2 - (bars ? 230 : 120), avail = end - top;
+          const fam = sty === 'serif' ? SERIF : SANS, wt = sty === 'serif' ? 700 : 900;
+          let fs = W*.56;
+          g.font = `${wt} ${fs}px ${fam}`;
+          if ('letterSpacing' in g) g.letterSpacing = sty === 'serif' ? '0.02em' : '0.04em';
+          const tw = g.measureText(b.ja).width; if (tw > avail) fs *= avail/tw;
+          g.font = `${wt} ${Math.round(fs)}px ${fam}`;
+          const cx = (top + end)/2, ty = b.en ? -W*.1 : 0;
+          g.textAlign = 'center'; g.textBaseline = 'middle';
+          g.fillStyle = ink; g.fillText(b.ja, cx, ty);
+          // 縁取りの本：背の両端に細い二重線
+          if (sty === 'outline'){ g.fillRect(-H/2 + 40, -W/2 + W*.1, H - 80, 3); g.fillRect(-H/2 + 40, -W/2 + W*.1 + 9, H - 80, 1.5); g.fillRect(-H/2 + 40, W/2 - W*.1 - 3, H - 80, 3); g.fillRect(-H/2 + 40, W/2 - W*.1 - 10.5, H - 80, 1.5); }
+          // 英字の副題：明朝の本はイタリックのセリフ、ゴシックの本は字間の広い大文字
+          if (b.en){
+            if ('letterSpacing' in g) g.letterSpacing = sty === 'serif' ? '0.02em' : '0.22em';
+            g.fillStyle = ink; g.globalAlpha = .95;
+            g.font = sty === 'serif' ? `italic 400 ${Math.round(W*.19)}px Georgia,"Times New Roman",serif` : `700 ${Math.round(W*.14)}px "Helvetica Neue",Arial,sans-serif`;
+            g.fillText(sty === 'serif' ? b.en : b.en.toUpperCase(), cx, W*.29);
+            g.globalAlpha = 1;
+          }
+          // 帯の模様（白い3本線）
+          if (bars){ g.fillStyle = ink; for (let k = 0; k < 3; k++) g.fillRect(H/2 - 210 + k*44, -W*.3, 26, W*.6); }
+          g.restore();
+          // 背の下の小さな番号（出版社のマークの位置）
+          if ('letterSpacing' in g) g.letterSpacing = '0px';
+          g.fillStyle = ink; g.globalAlpha = .75; g.textAlign = 'center'; g.textBaseline = 'middle';
+          g.font = `700 ${Math.round(W*.16)}px "Helvetica Neue",Arial,sans-serif`; g.fillText(b.no, W/2, H - 48);
+          g.globalAlpha = 1;
         });
       }
 
@@ -1777,7 +1793,7 @@
       [0, 1].forEach(row => {
         let x = -SW/2 + .1;
         books.filter(b => b.row === row).forEach((b, i) => {
-          const w = b.th*.92, h = .5 + b.hf*.26, d = .2 + (i%3)*.01;
+          const w = b.th*1.08, h = .5 + b.hf*.26, d = .2 + (i%3)*.01;
           const cover = mat(new T.Color(b.c).multiplyScalar(.8));
           const spineM = new T.MeshStandardMaterial({ map: spineTex(b, w, h), roughness: .55, emissive: new T.Color(0xffb766), emissiveIntensity: 0 });
           const m = add(new T.BoxGeometry(w, h, d), [cover, cover, pageMat, pageMat, spineM, cover], 0, 0, 0);
@@ -1789,7 +1805,7 @@
         // 本の並びの端：1冊を立てかける
         const lw = .07, lh = .6 - row*.05, la = .13;
         const lean = new T.BoxGeometry(lw, lh, .19); lean.translate(-lw/2, lh/2, 0);
-        const lm = add(lean, [mat('#5a6152'), mat('#5a6152'), pageMat, pageMat, mat(row ? '#c8b693' : '#6b7560'), mat('#5a6152')], x + lw*Math.cos(la) + lh*Math.sin(la) + .004, ROWY[row], SD/2 - .115);
+        const lm = add(lean, [mat('#1f1d1b'), mat('#1f1d1b'), pageMat, pageMat, mat(row ? '#e9a63a' : '#efe6d6'), mat('#1f1d1b')], x + lw*Math.cos(la) + lh*Math.sin(la) + .004, ROWY[row], SD/2 - .115);
         lm.rotation.z = la;
         const sx = SW/2 - .3;
         if (row === 0){
@@ -1815,7 +1831,7 @@
         } else {
           // 寝かせた本と、真鍮の玉
           let sy = ROWY[1];
-          [['#e3d8c3', .045, .34], ['#2d3442', .035, .31], ['#c49a8c', .05, .33]].forEach(([c, hh, ww], k) => {
+          [['#efe6d6', .045, .34], ['#1f1d1b', .035, .31], ['#e07b2a', .05, .33]].forEach(([c, hh, ww], k) => {
             const s = add(new T.BoxGeometry(ww, hh, .22), [mat(c), mat(c), mat(c), mat(c), pageMat, mat(c)], sx + .02 + k*.012, sy + hh/2, -.005); s.rotation.y = (k - 1)*.06; sy += hh; });
           add(new T.SphereGeometry(.045, 40, 24), new T.MeshStandardMaterial({ color: 0xc7a052, metalness: 1, roughness: .22 }), sx + .03, sy + .045, 0);
         }
@@ -1985,7 +2001,7 @@
     let ctl = null;
     // 背表紙の明朝体を読み込んでから描く（遅くても1.5秒で始める）
     started = true;
-    const f = document.fonts ? Promise.race([document.fonts.load('600 40px "Noto Serif JP"', '戦略設計'), new Promise(res => setTimeout(res, 1500))]) : Promise.resolve();
+    const f = document.fonts ? Promise.race([Promise.all([document.fonts.load('700 40px "Noto Serif JP"', '戦略設計'), document.fonts.load('900 40px "Noto Sans JP"', '戦略設計')]), new Promise(res => setTimeout(res, 1500))]) : Promise.resolve();
     f.then(init, init);
     let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (!ctl) return; if ((ctl.mode() === 'hero') !== wide()) ctl.place(); else ctl.layout(); }, 150); });
   })();
