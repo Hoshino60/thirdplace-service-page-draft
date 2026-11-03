@@ -572,6 +572,12 @@
     }
     @media(max-width:600px){.shelf2d .spine{--w:36px}.shelf2d .st{font-size:13px}#hero .hero-h1{font-size:38px}#hero .hero-copy{font-size:18px}#hero .hero-btns{flex-wrap:wrap;gap:20px}}
 
+
+    /* 狭い画面：文字の下に3Dの本棚（本の並びを大きく映す） */
+    .shelf3d-inline{display:none;position:relative;width:100%;aspect-ratio:10/16;max-height:640px;margin:8px 0 0;overflow:hidden}
+    .is-3d-inline .shelf3d-inline{display:block}
+    .is-3d-inline .shelf2d{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    @media(max-width:1023px){#hero .hero-in{padding-bottom:24px}}
   </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1695,10 +1701,9 @@
     }));
 
     function init(){
-      started = true;
       const canvas = document.createElement('canvas'); canvas.id = 'shelf3d';
-      hero.insertBefore(canvas, hero.firstChild);
-      const tip = document.createElement('div'); tip.className = 'shelf-tip'; hero.appendChild(tip);
+      const wrap = document.createElement('div'); wrap.className = 'shelf3d-inline'; nav.parentElement.insertBefore(wrap, nav);
+      const tip = document.createElement('div'); tip.className = 'shelf-tip';
 
       const r = new T.WebGLRenderer({ canvas, antialias: true, alpha: false });
       r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
@@ -1840,37 +1845,68 @@
       const dust = new T.Points(dg, new T.PointsMaterial({ size: .01, map: halo.material.map, transparent: true, opacity: .5, depthWrite: false, blending: T.AdditiveBlending }));
       scene.add(dust);
 
-      // ── 配置：文字の右側に本棚が来るように ──
+      // ── 配置：広い画面は文字の右に本棚全体、狭い画面は文字の下に本の並びを大きく ──
+      let mode = '', box = hero;
       function layout(){
-        const W = hero.clientWidth, H = hero.clientHeight;
+        const W = box.clientWidth, H = box.clientHeight;
+        if (!W || !H) return;
         r.setSize(W, H, false); cam.aspect = W/H; cam.updateProjectionMatrix();
-        const dist = 5.0, vh = 2*dist*Math.tan(T.MathUtils.degToRad(cam.fov/2)), vw = vh*cam.aspect;
-        const cx = (0.73 - .5)*vw;
-        shelf.position.set(cx, 0, 0); dust.position.set(cx, 0, 0);
-        lamp.position.set(cx - .22, 2.0, .55); spotTarget.position.set(cx + .05, .55, 0);
-        cam.userData = { x: 0, y: 1.0, z: dist };
+        const tan2 = 2*Math.tan(T.MathUtils.degToRad(cam.fov/2));
+        if (mode === 'hero'){
+          const dist = 5.0, vw = dist*tan2*cam.aspect;
+          shelf.position.set((0.73 - .5)*vw, 0, 0);
+          cam.userData = { x: 0, y: 1.0, z: dist, k: .6, ly: 1.0 };
+        } else {
+          // 本の並び（棚の左寄り）が幅いっぱいになるように。幅に余裕があれば棚全体を中央に
+          const dist = Math.max(1.0/(tan2*cam.aspect), 1.85/tan2), vw = dist*tan2*cam.aspect;
+          shelf.position.set(vw > 1.9 ? 0 : .37, 0, 0);
+          cam.userData = { x: 0, y: .95, z: dist, k: 0, ly: .95 };
+        }
+        cam.position.set(cam.userData.x, cam.userData.y, cam.userData.z);
+        dust.position.copy(shelf.position);
+        lamp.position.set(shelf.position.x - .22, 2.0, .55); spotTarget.position.set(shelf.position.x + .05, .55, 0);
       }
-      layout(); window.addEventListener('resize', () => { if (wide()) layout(); });
+      function place(){
+        mode = wide() ? 'hero' : 'inline';
+        box = mode === 'hero' ? hero : wrap;
+        if (canvas.parentElement !== box) box.insertBefore(canvas, box.firstChild);
+        if (tip.parentElement !== box) box.appendChild(tip);
+        hero.classList.toggle('is-3d', mode === 'hero'); hero.classList.toggle('is-3d-inline', mode === 'inline');
+        tip.classList.remove('on'); lastXY = null; pm.x = pm.y = 0;
+        layout();
+        io.disconnect(); io.observe(box);
+      }
+      ctl = { place, layout, mode: () => mode };
 
-      // ── 操作：当てると引き出す、押すとその節へ ──
+      // ── 操作：当てると引き出す、押す・タップするとその節へ ──
       const ray = new T.Raycaster(), mouse = new T.Vector2(), pm = { x: 0, y: 0 };
-      let hot = -1, focusIdx = -1, lastXY = null, waveAt = -1, near = false, leftAt = -1e9;
+      let hot = -1, focusIdx = -1, lastXY = null, waveAt = -1, waveNext = false, near = false, leftAt = -1e9;
       hero.addEventListener('pointermove', e => {
-        const rc = hero.getBoundingClientRect();
-        mouse.set((e.clientX-rc.left)/rc.width*2-1, -((e.clientY-rc.top)/rc.height)*2+1);
-        pm.x = mouse.x; pm.y = mouse.y; lastXY = [e.clientX-rc.left, e.clientY-rc.top];
+        if (e.pointerType && e.pointerType !== 'mouse'){ lastXY = null; return; }
+        const rc = box.getBoundingClientRect(), x = e.clientX - rc.left, y = e.clientY - rc.top;
+        if (x < 0 || y < 0 || x > rc.width || y > rc.height){ lastXY = null; return; }
+        mouse.set(x/rc.width*2 - 1, -(y/rc.height)*2 + 1);
+        lastXY = [x, y];
+        if (mode !== 'hero') return;
+        pm.x = mouse.x; pm.y = mouse.y;
         // 本棚に近づいたときだけ、本が左から順に一瞬浮く（離れて1.5秒たったら、また反応する）
-        const n = lastXY[0] > hero.clientWidth*.5;
-        if (n && !near && performance.now() - leftAt > 1500 && waveAt < 0) waveAt = clock.elapsedTime;
+        const n = x > rc.width*.5;
+        if (n && !near && performance.now() - leftAt > 1500 && waveAt < 0) waveNext = true;
         if (!n && near) leftAt = performance.now();
         near = n;
       });
       hero.addEventListener('pointerleave', () => { lastXY = null; if (near) leftAt = performance.now(); near = false; });
-      canvas.addEventListener('click', () => { if (hot >= 0) go(hot); });
+      function pick(cx, cy){
+        const rc = box.getBoundingClientRect();
+        mouse.set((cx - rc.left)/rc.width*2 - 1, -((cy - rc.top)/rc.height)*2 + 1);
+        ray.setFromCamera(mouse, cam); const hs = ray.intersectObjects(meshes.map(o => o.m));
+        return hs.length ? meshes.findIndex(o => o.m === hs[0].object) : -1;
+      }
+      canvas.addEventListener('click', e => { const i = pick(e.clientX, e.clientY); if (i >= 0) go(i); });
       function go(i){
         const t = document.querySelector(meshes[i].b.href); if (!t) return;
-        meshes[i].tilt = 1;
-        setTimeout(() => window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' }), 280);
+        meshes[i].tilt = 1; meshes[i].pull = 1;
+        setTimeout(() => window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' }), 320);
       }
       links.forEach((a, i) => {
         a.addEventListener('focus', () => { focusIdx = i; });
@@ -1880,7 +1916,7 @@
       function showTip(i, x, y){
         const b = meshes[i].b;
         if (tipFor !== i){ tipFor = i; tip.innerHTML = `<div class="tn"><span>${b.no}</span>${b.en}</div><div class="tt">${b.ja}</div><div class="td">${b.desc}</div><div class="tg">Read<i></i></div>`; }
-        tip.classList.toggle('flip', x > hero.clientWidth - 330); tip.style.left = x + 'px'; tip.style.top = Math.min(y, hero.clientHeight - 210) + 'px';
+        tip.classList.toggle('flip', x > box.clientWidth - 330); tip.style.left = x + 'px'; tip.style.top = Math.min(y, box.clientHeight - 210) + 'px';
         tip.classList.add('on');
       }
 
@@ -1888,14 +1924,15 @@
       const v = new T.Vector3(), clock = new T.Clock();
       const easeOut = t => 1 - Math.pow(1 - Math.min(Math.max(t, 0), 1), 4);
       function frame(){
-        if (!alive || !wide()){ alive = false; return; }
+        if (!alive) return;
         requestAnimationFrame(frame);
         const dt = Math.min(clock.getDelta(), .05), t = clock.elapsedTime;
+        if (waveNext){ waveAt = Math.max(t, 1.6); waveNext = false; }
         const cu = cam.userData;
         cam.position.x += ((cu.x + pm.x*.14) - cam.position.x)*.035;
         cam.position.y += ((cu.y + pm.y*.08) - cam.position.y)*.035;
         cam.position.z = cu.z;
-        cam.lookAt(cam.position.x*.6, 1.0, 0);
+        cam.lookAt(cam.position.x*cu.k, cu.ly, 0);
         lamp.rotation.z = Math.sin(t*.55)*.02; lamp.rotation.x = Math.sin(t*.4)*.014;
         halo.material.opacity = .85 + Math.sin(t*2.1)*.04;
         let hit = -1;
@@ -1922,35 +1959,35 @@
           const o = meshes[hot];
           o.m.getWorldPosition(v); hoverLight.position.set(v.x, v.y + .1, v.z + .3); hoverLight.intensity += (1 - hoverLight.intensity)*.12;
           if (lastXY && hit === hot && focusIdx !== hot) showTip(hot, lastXY[0], lastXY[1]);
-          else { v.set(o.m.position.x, o.base.y + o.h/2, o.base.z).applyMatrix4(shelf.matrixWorld).project(cam); showTip(hot, (v.x+1)/2*hero.clientWidth, (1-v.y)/2*hero.clientHeight); }
+          else { v.set(o.m.position.x, o.base.y + o.h/2, o.base.z).applyMatrix4(shelf.matrixWorld).project(cam); showTip(hot, (v.x+1)/2*box.clientWidth, (1-v.y)/2*box.clientHeight); }
         } else hoverLight.intensity *= .9;
         const p = dg.attributes.position.array;
         for (let i = 0; i < N; i++){ p[i*3+1] += dv[i]*dt*.04; p[i*3] += Math.sin(t*.3 + i)*dt*.008; if (p[i*3+1] > 2) p[i*3+1] = 0; }
         dg.attributes.position.needsUpdate = true;
         r.render(scene, cam);
       }
+      // 見えている間だけ描く。狭い画面では、本棚が画面に入るたびに本が順に浮く
       const io = new IntersectionObserver(es => es.forEach(e => {
-        const on = e.isIntersecting && wide() && !document.hidden;
+        const on = e.isIntersecting && !document.hidden;
+        if (on && mode === 'inline' && performance.now() - leftAt > 1500) waveNext = true;
+        if (!on && mode === 'inline' && alive) leftAt = performance.now();
         if (on && !alive){ alive = true; clock.getDelta(); frame(); } else if (!on) alive = false;
-      }));
-      io.observe(hero);
-      document.addEventListener('visibilitychange', () => { if (document.hidden) alive = false; else if (wide() && hero.getBoundingClientRect().bottom > 0 && !alive){ alive = true; clock.getDelta(); frame(); } });
+      }), { threshold: .35 });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden){ alive = false; return; }
+        const rc = box.getBoundingClientRect();
+        if (rc.bottom > 0 && rc.top < innerHeight && !alive){ alive = true; clock.getDelta(); frame(); }
+      });
+      place();
       requestAnimationFrame(() => canvas.classList.add('ready'));
     }
 
-    function apply(){
-      const on = wide();
-      hero.classList.toggle('is-3d', on);
-      if (on && !started){
-        // 背表紙の明朝体を読み込んでから描く（遅くても1.5秒で始める）
-        const f = document.fonts ? Promise.race([document.fonts.load('600 40px "Noto Serif JP"', '戦略設計'), new Promise(res => setTimeout(res, 1500))]) : Promise.resolve();
-        started = true; f.then(init, init);
-      }
-      const c = document.getElementById('shelf3d'); if (c) c.style.display = on ? '' : 'none';
-      if (on && document.getElementById('shelf3d')){ window.dispatchEvent(new Event('resize')); }
-    }
-    apply();
-    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { const was = hero.classList.contains('is-3d'); if (was !== wide()) apply(); }, 150); });
+    let ctl = null;
+    // 背表紙の明朝体を読み込んでから描く（遅くても1.5秒で始める）
+    started = true;
+    const f = document.fonts ? Promise.race([document.fonts.load('600 40px "Noto Serif JP"', '戦略設計'), new Promise(res => setTimeout(res, 1500))]) : Promise.resolve();
+    f.then(init, init);
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (!ctl) return; if ((ctl.mode() === 'hero') !== wide()) ctl.place(); else ctl.layout(); }, 150); });
   })();
 </script>
 </body>
