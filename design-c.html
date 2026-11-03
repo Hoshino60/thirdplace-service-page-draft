@@ -581,13 +581,15 @@
 
     /* 2Dの本棚も洋書の向き・書体に（題名を横書きのまま90度回す） */
     .shelf2d .st{text-orientation:sideways;font-size:15px;letter-spacing:.04em}
-    .shelf2d .spine[data-sty="sans"] .st,.shelf2d .spine[data-sty="bars"] .st{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;font-weight:900}
-    .shelf2d .spine[data-sty="outline"] .st{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;font-weight:900}
+    .shelf2d .spine .st{font-family:"Shippori Mincho B1",var(--serif);font-weight:800}
+    .shelf2d .spine[data-sty="sans"] .st{font-family:"Dela Gothic One","Hiragino Sans","Yu Gothic",sans-serif;font-weight:400}
+    .shelf2d .spine[data-sty="bars"] .st{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;font-weight:900}
+    .shelf2d .spine[data-sty="outline"] .st{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;font-weight:900}
     .shelf2d .spine[data-sty="outline"]{box-shadow:inset 3px 0 0 var(--c),inset 4px 0 0 var(--t),inset -3px 0 0 var(--c),inset -4px 0 0 var(--t)}
   </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Shippori+Mincho+B1:wght@800&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="goldLine" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56"><stop offset="0" stop-color="#f6df8d"/><stop offset="1" stop-color="#b8891a"/></linearGradient><radialGradient id="goldGlow"><stop offset="0" stop-color="rgba(201,162,39,.26)"/><stop offset="1" stop-color="rgba(201,162,39,.03)"/></radialGradient></defs></svg>
@@ -1751,7 +1753,9 @@
           g.save(); g.translate(W/2, H/2); g.rotate(Math.PI/2);
           // 回した座標：x は背の長さ方向（-H/2〜H/2）、y は背の幅方向（-W/2〜W/2）
           const top = -H/2 + 70, end = H/2 - (bars ? 230 : 120), avail = end - top;
-          const fam = sty === 'serif' ? SERIF : SANS, wt = sty === 'serif' ? 700 : 900;
+          // 書体：明朝＝しっぽり明朝 B1、太いゴシック＝デラゴシック、帯・縁取り＝Zen角ゴシック New
+          const FONT = { serif: ['800', '"Shippori Mincho B1",' + SERIF], sans: ['400', '"Dela Gothic One",' + SANS] };
+          const [wt, fam] = FONT[sty] || ['900', '"Zen Kaku Gothic New",' + SANS];
           let fs = W*.56;
           g.font = `${wt} ${fs}px ${fam}`;
           if ('letterSpacing' in g) g.letterSpacing = sty === 'serif' ? '0.02em' : '0.04em';
@@ -2001,7 +2005,8 @@
     let ctl = null;
     // 背表紙の明朝体を読み込んでから描く（遅くても1.5秒で始める）
     started = true;
-    const f = document.fonts ? Promise.race([Promise.all([document.fonts.load('700 40px "Noto Serif JP"', '戦略設計'), document.fonts.load('900 40px "Noto Sans JP"', '戦略設計')]), new Promise(res => setTimeout(res, 1500))]) : Promise.resolve();
+    const sample = books.map(b => b.ja).join('');
+    const f = document.fonts ? Promise.race([Promise.all(['800 40px "Shippori Mincho B1"', '400 40px "Dela Gothic One"', '900 40px "Zen Kaku Gothic New"', '600 40px "Noto Serif JP"'].map(x => document.fonts.load(x, sample))), new Promise(res => setTimeout(res, 2500))]) : Promise.resolve();
     f.then(init, init);
     let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (!ctl) return; if ((ctl.mode() === 'hero') !== wide()) ctl.place(); else ctl.layout(); }, 150); });
   })();
