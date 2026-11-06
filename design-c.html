@@ -614,7 +614,7 @@
     #hero .hero-kicker{font-size:11.5px;font-weight:500;letter-spacing:.22em;color:rgba(241,236,226,.62);margin-bottom:34px}
     #hero .hero-kicker::before{width:40px;background:var(--champ)}
     #hero .hero-h1{font-family:var(--serif);font-weight:700;font-size:clamp(42px,5.2vw,80px);line-height:1.26;letter-spacing:.02em;color:var(--ivory);margin-bottom:36px;text-shadow:0 2px 40px rgba(0,0,0,.6)}
-    #hero .hero-h1 em{font-style:normal;white-space:nowrap;display:inline-block;background:linear-gradient(100deg,#b8913f 0%,#e9d39a 30%,#fff3d2 48%,#e9d39a 66%,#b8913f 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 24px rgba(217,191,122,.28));animation:catchshine 6s ease-in-out infinite}
+    #hero .hero-h1 em{font-style:normal;white-space:nowrap;display:inline-block;background:linear-gradient(100deg,#b8913f 0%,#e9d39a 30%,#fff3d2 48%,#e9d39a 66%,#b8913f 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 24px rgba(217,191,122,.28));animation:catchshine 10s ease-in-out infinite}
     @keyframes catchshine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
     @media(prefers-reduced-motion:reduce){#hero .hero-h1 em{animation:none}}
     #hero .hero-copy{font-family:var(--serif);font-weight:600;font-size:clamp(19px,1.9vw,27px);line-height:1.6;letter-spacing:.06em;color:var(--ivory);margin-bottom:18px;padding-left:20px;border-left:2px solid var(--champ)}
@@ -1728,7 +1728,9 @@
     function lines(el){
       if (!el || el.dataset.lined) return;
       const parts = el.innerHTML.split(/<br\s*\/?>/i);
-      el.innerHTML = parts.map((p,i)=>`<span class="ln"><span style="transition-delay:${i*0.12}s">${p}</span></span>`).join('');
+      // ヒーローのキャッチ「その熱量を、検索で届く言葉に。」だけ、ゆっくり出す（2026-11-07 利用者の指示）
+      const slow = el.classList.contains('hero-h1');
+      el.innerHTML = parts.map((p,i)=>`<span class="ln"><span style="transition-delay:${slow ? 0.3 + i*0.55 : i*0.12}s${slow ? ';transition-duration:2.2s' : ''}">${p}</span></span>`).join('');
       el.dataset.lined = '1';
     }
     $$('.hero-h1, #pain .h2, #services .h2, #compare .h2, #cases .h2, #plans .h2, #team .h2, #faq .h2, #komon .h2, #recommended .h2, .cta-h2, .ai-title').forEach(lines);
