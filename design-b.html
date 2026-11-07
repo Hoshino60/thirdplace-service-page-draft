@@ -1555,7 +1555,7 @@
       const parts = el.innerHTML.split(/<br\s*\/?>/i);
       // ヒーローのキャッチ「その熱量を、検索で届く言葉に。」だけ、ゆっくり出す（2026-11-07 利用者の指示）
       const slow = el.classList.contains('hero-h1');
-      el.innerHTML = parts.map((p,i)=>`<span class="ln"><span style="transition-delay:${slow ? 0.3 + i*1.2 : i*0.12}s${slow ? ';transition-duration:2.2s' : ''}">${p}</span></span>`).join('');
+      el.innerHTML = parts.map((p,i)=>`<span class="ln"><span style="transition-delay:${slow ? 0.3 + i*1.7 : i*0.12}s${slow ? ';transition-duration:2.2s' : ''}">${p}</span></span>`).join('');
       el.dataset.lined = '1';
     }
     $$('.hero-h1, #pain .h2, #services .h2, #compare .h2, #cases .h2, #plans .h2, #team .h2, #faq .h2, #komon .h2, #recommended .h2, .cta-h2, .ai-title').forEach(lines);
